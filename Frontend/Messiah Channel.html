@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Jerusalem Church - Live Streaming & Videos</title>
+    <link rel="stylesheet" href="/styling/messiah channel.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="messiah%20channel.js" defer></script>
+</head>
+<body>
+<!-- Include your navbar here -->
+
+<main class="streaming-container">
+    <!-- Live Stream Section -->
+    <section class="live-section">
+        <div class="section-header">
+            <h2>Messiah Channel</h2>
+            <div class="live-indicator">
+                <span class="live-dot"></span>
+                <span class="live-text" id="liveStatus">OFFLINE</span>
+            </div>
+        </div>
+
+        <div class="video-container" id="liveStreamContainer">
+            <!-- vMix stream will be embedded here -->
+            <iframe width="996" height="560" src="https://www.youtube.com/embed/LaoLf-B7h_g" title="CARE ABOUT YOUR FAITH - SUNDAY SERVICE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <div id="vmixPlayer">
+                <!-- When not streaming, show placeholder -->
+                <div class="stream-placeholder" id="streamPlaceholder">
+                    <img src="/Images/messaih%20channel.jpg" alt="New Jerusalem Church Logo">
+                    <h3>We are currently offline</h3>
+                    <p>Our next live service will be on Sunday at 10:00 CAT</p>
+                    <button class="reminder-btn" id="reminderBtn">
+                        <i class="far fa-bell"></i> Set Reminder
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="stream-info">
+            <h3 id="liveTitle">Sunday Service</h3>
+            <p id="liveDescription">Join us for our weekly Sunday service where we worship together and hear the Word of God.</p>
+            <div class="stream-actions">
+                <button class="action-btn" id="shareBtn">
+                    <i class="fas fa-share-alt"></i> Share
+                </button>
+                <button class="action-btn" id="donateBtn">
+                    <i class="fas fa-hand-holding-heart"></i> Give
+                </button>
+                <button class="action-btn" id="chatBtn">
+                    <i class="far fa-comments"></i> Chat
+                </button>
+            </div>
+        </div>
+
+        <!-- Live Chat (can be toggled) -->
+        <div class="chat-container" id="chatContainer">
+            <div class="chat-header">
+                <h3>Live Chat</h3>
+                <button id="closeChatBtn"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <!-- Chat messages will appear here -->
+            </div>
+            <div class="chat-input">
+                <input type="text" id="messageInput" placeholder="Type your message...">
+                <button id="sendMessageBtn"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Archive Section -->
+    <section class="archive-section">
+        <div class="section-header">
+            <h2>Video Archive</h2>
+            <div class="filter-container">
+                <select id="categoryFilter">
+                    <option value="all">All Categories</option>
+                    <option value="sunday">Sunday Services</option>
+                    <option value="bible">Bible Study</option>
+                    <option value="special">Special Events</option>
+                    <option value="testimonies">Testimonies</option>
+                </select>
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Search videos...">
+                    <button id="searchBtn"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="videos-grid" id="videosGrid">
+            <!-- Video cards will be dynamically loaded here -->
+            <!-- Example card structure: -->
+            <div class="video-card">
+                <div class="video-thumbnail">
+                    <img src="/Images/sermon-thumbnail.jpg" alt="Sermon Thumbnail">
+                    <span class="video-duration">45:12</span>
+                </div>
+                <div class="video-info">
+                    <h3>The Power of Faith</h3>
+                    <p class="video-date">May 15, 2023</p>
+                    <p class="video-description">Pastor John teaches about the power of faith in our daily lives.</p>
+                </div>
+            </div>
+            <!-- More video cards will be added dynamically -->
+        </div>
+
+        <div class="pagination" id="pagination">
+            <button class="page-btn" id="prevPage"><i class="fas fa-chevron-left"></i></button>
+            <div class="page-numbers" id="pageNumbers">
+                <span class="page-number active">1</span>
+                <span class="page-number">2</span>
+                <span class="page-number">3</span>
+            </div>
+            <button class="page-btn" id="nextPage"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </section>
+
+    <!-- Video Player Modal -->
+    <div class="video-modal" id="videoModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeModalBtn"><i class="fas fa-times"></i></button>
+            <div class="modal-video-container" id="modalVideoContainer">
+                <!-- Video player will be inserted here -->
+            </div>
+            <div class="modal-video-info">
+                <h3 id="modalVideoTitle">Video Title</h3>
+                <p id="modalVideoDate">Date</p>
+                <p id="modalVideoDescription">Video description will appear here.</p>
+                <div class="modal-actions">
+                    <button class="action-btn" id="modalShareBtn">
+                        <i class="fas fa-share-alt"></i> Share
+                    </button>
+                    <button class="action-btn" id="modalDownloadBtn">
+                        <i class="fas fa-download"></i> Download
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Share Modal -->
+    <div class="share-modal" id="shareModal">
+        <div class="share-content">
+            <button class="close-modal" id="closeShareBtn"><i class="fas fa-times"></i></button>
+            <h3>Share This Video</h3>
+            <div class="share-options">
+                <a href="#" class="share-option" data-platform="facebook">
+                    <i class="fab fa-facebook-f"></i>
+                    <span>Facebook</span>
+                </a>
+                <a href="#" class="share-option" data-platform="twitter">
+                    <i class="fab fa-twitter"></i>
+                    <span>Twitter</span>
+                </a>
+                <a href="#" class="share-option" data-platform="whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>WhatsApp</span>
+                </a>
+                <a href="#" class="share-option" data-platform="email">
+                    <i class="fas fa-envelope"></i>
+                    <span>Email</span>
+                </a>
+            </div>
+            <div class="share-link">
+                <input type="text" id="shareLink" readonly>
+                <button id="copyLinkBtn"><i class="fas fa-copy"></i></button>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Include your footer here -->
+
+</body>
+</html>
