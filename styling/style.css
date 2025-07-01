@@ -120,8 +120,9 @@ img {
 }
 
 /* --- Mega Menu --- */
-.mega-menu-item {
+.mega-menu-item .a{
     position: relative;
+
 }
 
 .mega-menu {
