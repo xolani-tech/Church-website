@@ -16,10 +16,8 @@
   <style>
     #live-stream {
       background-color: #000;
-      padding: 0;
       margin-top: 100px; /* Offset for fixed navbar */
     }
-
     .live-stream-container {
       position: relative;
       width: 100%;
@@ -27,15 +25,12 @@
       margin: 0 auto;
       padding: 2rem 1rem;
     }
-
-    .live-stream-container iframe,
     .live-stream-container video {
       width: 100%;
       height: 500px;
       border: none;
       border-radius: 8px;
     }
-
     .media-links {
       display: flex;
       justify-content: space-around;
@@ -43,7 +38,6 @@
       border-bottom: 2px solid #ccc;
       padding-bottom: 1rem;
     }
-
     .media-link {
       flex: 1;
       text-align: center;
@@ -54,11 +48,9 @@
       color: var(--brand-dark);
       transition: color 0.3s;
     }
-
     .media-link:hover {
       color: var(--brand-gold);
     }
-
     .media-link.active::after {
       content: '';
       position: absolute;
@@ -68,14 +60,12 @@
       height: 3px;
       background-color: var(--brand-gold);
     }
-
     .media-content {
       display: none;
       flex-wrap: wrap;
       gap: 2rem;
       justify-content: center;
     }
-
     .media-content.active {
       display: flex;
     }
@@ -128,7 +118,7 @@
           <li><a href="/#contact">Giving</a></li>
         </ul>
       </nav>
-      <button id="mobile-menu-toggle">
+      <button id="mobile-menu-toggle" aria-label="Toggle navigation menu">
         <span class="hamburger-icon"></span>
       </button>
     </div>
@@ -139,8 +129,6 @@
     <div class="live-stream-container">
       <h2 class="section-title" style="text-align: center; color: white;">Live Stream</h2>
       <video src="/videos/livestream.mp4" controls autoplay muted></video>
-      <!-- Or use embed: -->
-      <!-- <iframe src="https://www.youtube.com/embed/live_stream?channel=YOUR_CHANNEL_ID" allowfullscreen></iframe> -->
     </div>
   </section>
 
@@ -196,11 +184,8 @@
           </div>
         </div>
       </div>
-
     </div>
   </section>
-
-  <!-- FOOTER (optional - reuse from homepage if needed) -->
 
   <!-- JS for Tab Switching -->
   <script>
@@ -216,6 +201,9 @@
       });
     });
   </script>
+
+  <!-- External main script -->
+  <script src="/scripts/main.js"></script>
 
 </body>
 </html>

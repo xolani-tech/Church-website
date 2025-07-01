@@ -64,7 +64,7 @@ img {
 /* --- Header --- */
 #header {
     position: fixed;
-    top: 4px; /* Account for top line */
+    top: 4px;
     left: 0;
     width: 100%;
     height: var(--header-height);
@@ -91,8 +91,6 @@ img {
     font-size: 2rem;
     font-weight: 700;
     color: var(--text-light);
-    height: 40px;
-    width: 100%;
 }
 
 #header.scrolled .logo {
@@ -119,18 +117,23 @@ img {
     color: var(--brand-gold);
 }
 
-/* --- Mega Menu --- */
-.mega-menu-item .a{
+/* --- Ministries Link (Mega Menu Parent) --- */
+.mega-menu-item {
     position: relative;
-
 }
 
+.mega-menu-item > a {
+    padding: 10px 15px;
+    display: inline-block;
+    line-height: 1.6;
+}
+
+/* --- Mega Menu --- */
 .mega-menu {
     display: none;
     position: absolute;
     top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
+    left: -300%; /* Align to right edge of parent */
     width: 800px;
     background-color: #fff;
     box-shadow: 0 8px 16px rgba(0,0,0,0.15);
@@ -165,7 +168,7 @@ img {
 .mega-menu-column a {
     display: block;
     padding: 8px 0;
-    color: var(--brand-gray) !important; /* Override nav link color */
+    color: var(--brand-gray) !important;
     font-weight: 500;
 }
 
@@ -237,7 +240,7 @@ img {
     /* border: 2px solid var(--brand-gold); */
     padding: 10px 20px;
     letter-spacing: 2px;
-    height: 150px;
+    height: 190px;
     width: auto;
 
     
