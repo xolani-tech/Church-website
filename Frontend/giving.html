@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Giving - New Jerusalem of All Nations</title>
+    <link rel="stylesheet" href="/styling/style.css">
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      :root {
+        --giving-primary: #0a4b78;
+        --giving-secondary: #003087;
+        --giving-accent: #3498db;
+        --giving-text: #333;
+        --giving-light-gray: #f5f5f5;
+        --giving-medium-gray: #7f8c8d;
+        --giving-dark-gray: #2c3e50;
+        --giving-white: #ffffff;
+      }
+
+      body {
+        background-color: var(--giving-light-gray);
+        color: var(--giving-text);
+        line-height: 1.6;
+      }
+      .top-line {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: var(--brand-gold);
+    z-index: 1001;
+}
+
+      /* Main Content Styles */
+      .giving-container {
+        max-width: 800px;
+        margin: 150px auto;
+        padding: 0 20px;
+        text-align: center;
+      }
+      .about-content h2{
+        text-align: center;
+        justify-content: center;
+        font-size: 80px;
+        height: 200px;
+      }
+
+      .giving-header {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .giving-title {
+        color: var(--giving-primary);
+        font-size: 32px;
+        margin-bottom: 15px;
+      }
+
+      .giving-subtitle {
+        color: var(--giving-medium-gray);
+        font-size: 18px;
+        margin-bottom: 20px;
+      }
+
+      .giving-verse {
+        font-style: italic;
+        color: var(--brand-gold);
+        font-size: 16px;
+        margin-bottom: 20px;
+      }
+
+      .giving-form {
+        background: var(--giving-white);
+        border-radius: 10px;
+        padding: 30px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .giving-step {
+        margin-bottom: 30px;
+      }
+
+      .giving-step-title {
+        font-weight: bold;
+        margin-bottom: 15px;
+        color: var(--giving-dark-gray);
+        font-size: 18px;
+      }
+
+      .giving-amount-options {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 15px;
+      }
+
+      .giving-amount-btn {
+        background: #f1f1f1;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-size: 16px;
+      }
+
+      .giving-amount-btn:hover {
+        background: var(--giving-accent);
+        color: var(--giving-white);
+      }
+
+      .giving-amount-btn.selected {
+        background: var(--giving-accent);
+        color: var(--giving-white);
+      }
+
+      .giving-custom-amount {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+
+      .giving-select {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        margin-bottom: 15px;
+        font-size: 16px;
+        background-color: var(--giving-white);
+      }
+
+      .giving-payment-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 20px;
+      }
+
+      .giving-pay-btn {
+        padding: 15px;
+        border: none;
+        border-radius: 5px;
+        color: var(--giving-white);
+        font-weight: bold;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s;
+        font-size: 16px;
+      }
+
+      .giving-paystack-btn {
+        background: var(--giving-primary);
+      }
+
+      .giving-paypal-btn {
+        background: var(--giving-secondary);
+      }
+
+      .giving-pay-btn:hover {
+        opacity: 0.9;
+        transform: translateY(-2px);
+      }
+
+      .giving-pay-btn img {
+        height: 20px;
+        margin-right: 10px;
+      }
+
+      .giving-security-note {
+        display: flex;
+        align-items: center;
+        margin-top: 20px;
+        color: var(--giving-medium-gray);
+        font-size: 14px;
+      }
+
+      .giving-security-note svg {
+        margin-right: 5px;
+      }
+
+      .giving-recurring-link {
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      .giving-recurring-link a {
+        color: var(--brand-gold);
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .giving-footer {
+        text-align: center;
+        margin-top: 50px;
+        color: var(--giving-medium-gray);
+        font-size: 14px;
+        padding: 20px 0;
+      }
+
+      /* Responsive Styles */
+      @media (max-width: 480px) {
+        .giving-container {
+          padding: 0 15px;
+        }
+
+        .giving-form {
+          padding: 20px;
+        }
+
+        .giving-title {
+          font-size: 28px;
+        }
+
+        .giving-subtitle {
+          font-size: 16px;
+        }
+
+        .giving-amount-options {
+          gap: 8px;
+        }
+
+        .giving-amount-btn {
+          padding: 10px 15px;
+          font-size: 14px;
+        }
+      }
+    </style>
+</head>
+<body>
+    <header id="header" style="background-color: black;">
+        <div class="container">
+            <a href="#" class="logo">NEW JERUSALEM</a>
+            <nav id="navbar">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="#sermons">Sermons</a></li>
+                    <li class="mega-menu-item">
+                        <a href="#ministries">Ministries &#9662;</a>
+                        <div class="mega-menu">
+                            <div class="mega-menu-content">
+                                <div class="mega-menu-column">
+                                    <h3>Community Groups</h3>
+                                    <a href="#">Men's Ministry</a>
+                                    <a href="#">Women's Ministry</a>
+                                    <a href="#">Youth Group</a>
+                                    <a href="#">Seniors Fellowship</a>
+                                </div>
+                                <div class="mega-menu-column">
+                                    <h3>Outreach</h3>
+                                    <a href="#">Local Missions</a>
+                                    <a href="#">Global Missions</a>
+                                    <a href="#">Food Pantry</a>
+                                    <a href="#">Community Service</a>
+                                </div>
+                                <div class="mega-menu-column">
+                                    <h3>Education</h3>
+                                    <a href="#">Bible Studies</a>
+                                    <a href="#">Sunday School</a>
+                                    <a href="#">New Believers Class</a>
+                                    <a href="#">Theology Seminars</a>
+                                </div>
+                                <div class="mega-menu-column featured-column">
+                                    <img src="https://images.unsplash.com/photo-1518495973542-4542c06a5843?q=80&w=400&auto=format&fit=crop" alt="Children's Ministry">
+                                    <h4>Children's Ministry</h4>
+                                    <p>Programs available for all ages.</p>
+                                    <a href="#" class="btn-learn-more">Learn More &rarr;</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="#events">Events</a></li>
+                    <li><a href="giving.html" class="active">Giving</a></li>
+                </ul>
+            </nav>
+            <button id="mobile-menu-toggle">
+                <span class="hamburger-icon"></span>
+            </button>
+        </div>
+    </header>
+
+    <div class="giving-container">
+      <div class="about-content">
+        <h2>Partner with Us</h2>
+        <p class="giving-subtitle">
+          Choose your giving type below and help us make a difference.
+        </p>
+        <p class="giving-verse">
+          "Each of you should give what you have decided in your heart to give..." — 2 Corinthians 9:7
+        </p>
+      </div>
+
+      <div class="giving-form">
+        <div class="giving-step">
+          <div class="giving-step-title">1. Select Amount (ZAR)</div>
+          <div class="giving-amount-options">
+            <button class="giving-amount-btn" data-amount="1000">R1,000</button>
+            <button class="giving-amount-btn" data-amount="5000">R5,000</button>
+            <button class="giving-amount-btn" data-amount="10000">R10,000</button>
+          </div>
+          <input
+            type="number"
+            id="giving-custom-amount"
+            class="giving-custom-amount"
+            placeholder="Or enter custom amount"
+          />
+        </div>
+
+        <div class="giving-step">
+          <div class="giving-step-title">2. Select Offering (Optional)</div>
+          <select id="giving-fund-select" class="giving-select">
+            <option value="giving">Giving</option>
+            <option value="general">Tithes</option>
+            <option value="missions">Partnership</option>
+            <option value="building">Support</option>
+            <option value="benevolence">Seed Offering</option>
+            <option value="first">First fruit</option>
+          </select>
+        </div>
+
+        <div class="giving-step">
+          <div class="giving-step-title">3. Choose Payment Method</div>
+          <div class="giving-payment-buttons">
+            <button id="giving-paystack-btn" class="giving-pay-btn giving-paystack-btn">
+              <img
+                src="https://images.seeklogo.com/logo-png/51/1/paystack-logo-png_seeklogo-511548.png"
+                alt="PayStack"
+              />
+              Pay with PayStack
+            </button>
+            <button id="giving-paypal-btn" class="giving-pay-btn giving-paypal-btn">
+              <img
+                src="https://tse1.explicit.bing.net/th/id/OIP.UEXTt6nVBMLf5I8rQh8U_wHaFj?rs=1&pid=ImgDetMain&o=7&rm=3"
+                alt="PayPal"
+              />
+              Pay with PayPal
+            </button>
+          </div>
+        </div>
+
+        <div class="giving-security-note">
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M12 2L3 5V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V5L12 2ZM12 17C10.9 17 10 16.1 10 15C10 13.9 10.9 13 12 13C13.1 13 14 13.9 14 15C14 16.1 13.1 17 12 17ZM14 9H10V11H14V9Z"
+              fill="#7f8c8d"
+            />
+          </svg>
+          All transactions are secure and encrypted
+        </div>
+
+        <div class="giving-recurring-link">
+          <a href="#">Set up recurring giving?</a>
+        </div>
+      </div>
+
+      <div class="giving-footer">
+        <p>Need help? Contact us at newjerusalem.int.ministries@gmail.com</p>
+        <p>© 2025 New Jerusalem of All Nations. All rights reserved.</p>
+      </div>
+    </div>
+
+    <!-- PayStack Integration -->
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+    <script>
+      // Mobile menu toggle (keep this if your external CSS doesn't handle it)
+      const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+      const navbar = document.getElementById('navbar');
+      
+      mobileMenuToggle.addEventListener('click', () => {
+        navbar.classList.toggle('active');
+      });
+
+      // Amount selection
+      const amountBtns = document.querySelectorAll(".giving-amount-btn");
+      const customAmount = document.getElementById("giving-custom-amount");
+      let selectedAmount = 0;
+
+      amountBtns.forEach((btn) => {
+        btn.addEventListener("click", function () {
+          amountBtns.forEach((b) => b.classList.remove("selected"));
+          this.classList.add("selected");
+          selectedAmount = this.dataset.amount;
+          customAmount.value = "";
+        });
+      });
+
+      customAmount.addEventListener("input", function () {
+        amountBtns.forEach((b) => b.classList.remove("selected"));
+        selectedAmount = this.value;
+      });
+
+      // PayStack Payment
+      document.getElementById("giving-paystack-btn").addEventListener("click", function () {
+        const amount = selectedAmount || customAmount.value;
+        if (!amount || amount <= 0) {
+          alert("Please enter a valid amount");
+          return;
+        }
+
+        const fund = document.getElementById("giving-fund-select").value;
+
+        const handler = PaystackPop.setup({
+          key: "pk_test_your_paystack_key", // Replace with your PayStack public key
+          email: "donor@example.com", // You can collect this or use a default
+          amount: amount * 100, // PayStack uses kobo (multiply by 100)
+          currency: "ZAR",
+          ref: "NJ-" + Math.floor(Math.random() * 1000000000),
+          metadata: {
+            custom_fields: [
+              {
+                display_name: "Fund",
+                variable_name: "fund",
+                value: fund,
+              },
+            ],
+          },
+          callback: function (response) {
+            alert("Thank you for your generous support!");
+            // Redirect to thank you page or show success message
+          },
+          onClose: function () {
+            console.log("Payment window closed");
+          },
+        });
+        handler.openIframe();
+      });
+
+      // PayPal Payment
+      document.getElementById("giving-paypal-btn").addEventListener("click", function () {
+        const amount = selectedAmount || customAmount.value;
+        if (!amount || amount <= 0) {
+          alert("Please enter a valid amount");
+          return;
+        }
+
+        // In a real implementation, you would use PayPal's SDK
+        alert("Redirecting to PayPal...");
+        // This is a placeholder - see below for actual PayPal integration
+      });
+    </script>
+
+    <!-- PayPal Integration (Uncomment and configure) -->
+    <!--
+    <script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID&currency=USD"></script>
+    <script>
+        paypal.Buttons({
+            style: {
+                layout: 'vertical',
+                color: 'blue',
+                shape: 'rect',
+                label: 'paypal'
+            },
+            createOrder: function(data, actions) {
+                const amount = selectedAmount || customAmount.value;
+                const fund = document.getElementById('giving-fund-select').value;
+                
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: (amount / 1000).toFixed(2), // Convert to USD (example rate)
+                            currency_code: 'USD'
+                        },
+                        description: 'Church Donation: ' + fund
+                    }]
+                });
+            },
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(details) {
+                    alert('Donation completed by ' + details.payer.name.given_name);
+                    // Redirect to thank you page
+                });
+            }
+        }).render('#giving-paypal-btn');
+    </script>
+    -->
+  </body>
+</html>
