@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Giving - New Jerusalem of All Nations</title>
     <link rel="stylesheet" href="/styling/style.css">
+      <link rel="icon" type="image/png" href="../Images/another_logo.png">
+
     <style>
       * {
         margin: 0;
@@ -42,7 +44,7 @@
       /* Main Content Styles */
       .giving-container {
         max-width: 800px;
-        margin: 150px auto;
+        margin: 70px auto;
         padding: 0 20px;
         text-align: center;
       }
@@ -50,7 +52,7 @@
         text-align: center;
         justify-content: center;
         font-size: 80px;
-        height: 200px;
+        height: 150px;
       }
 
       .giving-header {
@@ -209,6 +211,113 @@
         font-size: 14px;
         padding: 20px 0;
       }
+      
+      /* Custom Dropdown Styles */
+      .custom-select {
+        position: relative;
+        width: 100%;
+        margin-bottom: 15px;
+      }
+      
+      .select-header {
+        padding: 15px;
+        background-color: var(--giving-white);
+        border: 2px solid #e9ecef;
+        border-radius: 5px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: border-color 0.3s ease;
+        font-weight: bold;
+      }
+      
+      .select-header:hover {
+        border-color: var(--giving-accent);
+      }
+      
+      .select-header.active {
+        border-color: var(--giving-accent);
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+      
+      .select-options {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--giving-white);
+        border: 2px solid #e9ecef;
+        border-top: none;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        z-index: 10;
+      }
+      
+      .select-options.active {
+        max-height: 400px;
+        overflow-y: auto;
+      }
+      
+      .option {
+        padding: 15px;
+        border-bottom: 1px solid #f1f1f1;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+        text-align: left;
+      }
+      
+      .option:hover {
+        background-color: #f8f9fa;
+      }
+      
+      .option:last-child {
+        border-bottom: none;
+      }
+      
+      .option-title {
+        font-weight: 600;
+        margin-bottom: 5px;
+        color: var(--giving-dark-gray);
+      }
+      
+      .option-description {
+        color: var(--giving-medium-gray);
+        font-size: 0.9rem;
+        line-height: 1.4;
+      }
+      
+      .selected-option {
+        font-weight: 600;
+        color: var(--giving-dark-gray);
+      }
+      
+      .chevron {
+        transition: transform 0.3s ease;
+      }
+      
+      .chevron.rotated {
+        transform: rotate(180deg);
+      }
+      
+      .giving-offering-desc {
+        margin-top: 10px;
+        text-align: left;
+        padding: 10px;
+        background-color: #f8f9fa;
+        border-radius: 5px;
+        font-size: 14px;
+        color: var(--giving-medium-gray);
+        display: none;
+      }
+      
+      .giving-offering-desc.active {
+        display: block;
+      }
 
       /* Responsive Styles */
       @media (max-width: 480px) {
@@ -236,62 +345,18 @@
           padding: 10px 15px;
           font-size: 14px;
         }
+        
+        .about-content h2 {
+          font-size: 50px;
+          height: auto;
+          margin-bottom: 20px;
+        }
       }
     </style>
 </head>
 <body>
   <div class="top-line"></div>
-    <header id="header" style="background-color: black;">
-        <div class="container">
-            <a href="#" class="logo">NEW JERUSALEM</a>
-            <nav id="navbar">
-                <ul class="nav-links">
-                    <li><a href="/Frontend/index.html">Home</a></li>
-                    <li><a href="/Frontend/about.html">About</a></li>
-                    <li><a href="/Frontend/Live_Stream.html">Sermons</a></li>
-                    <li class="mega-menu-item">
-                        <a href="#ministries">Ministries &#9662;</a>
-                        <div class="mega-menu">
-                            <div class="mega-menu-content">
-                                <div class="mega-menu-column">
-                                    <h3>Community Groups</h3>
-                                    <a href="#">Men's Ministry</a>
-                                    <a href="#">Women's Ministry</a>
-                                    <a href="#">Youth Group</a>
-                                    <a href="#">Seniors Fellowship</a>
-                                </div>
-                                <div class="mega-menu-column">
-                                    <h3>Outreach</h3>
-                                    <a href="#">Local Missions</a>
-                                    <a href="#">Global Missions</a>
-                                    <a href="#">Food Pantry</a>
-                                    <a href="#">Community Service</a>
-                                </div>
-                                <div class="mega-menu-column">
-                                    <h3>Education</h3>
-                                    <a href="#">Bible Studies</a>
-                                    <a href="#">Sunday School</a>
-                                    <a href="#">New Believers Class</a>
-                                    <a href="#">Theology Seminars</a>
-                                </div>
-                                <div class="mega-menu-column featured-column">
-                                    <img src="https://images.unsplash.com/photo-1518495973542-4542c06a5843?q=80&w=400&auto=format&fit=crop" alt="Children's Ministry">
-                                    <h4>Children's Ministry</h4>
-                                    <p>Programs available for all ages.</p>
-                                    <a href="#" class="btn-learn-more">Learn More &rarr;</a>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li><a href="#events">Events</a></li>
-                    <li><a href="/Frontend/giving.html" class="active">Giving</a></li>
-                </ul>
-            </nav>
-            <button id="mobile-menu-toggle">
-                <span class="hamburger-icon"></span>
-            </button>
-        </div>
-    </header>
+  
 
     <div class="giving-container">
       <div class="about-content">
@@ -321,15 +386,42 @@
         </div>
 
         <div class="giving-step">
-          <div class="giving-step-title">2. Select Offering (Optional)</div>
-          <select id="giving-fund-select" class="giving-select">
-            <option value="giving">Giving</option>
-            <option value="general">Tithes</option>
-            <option value="missions">Partnership</option>
-            <option value="building">Support</option>
-            <option value="benevolence">Seed Offering</option>
-            <option value="first">First fruit</option>
-          </select>
+          <div class="giving-step-title">2. Select Giving Type</div>
+          <div class="custom-select">
+            <div class="select-header" id="select-header">
+              <span class="selected-option">Choose a giving type</span>
+              <span class="chevron">▼</span>
+            </div>
+            <div class="select-options" id="select-options">
+              <div class="option" data-value="giving">
+                <div class="option-title">Giving</div>
+                <div class="option-description">General free-will contribution to support the church</div>
+              </div>
+              <div class="option" data-value="tithes">
+                <div class="option-title">Tithes</div>
+                <div class="option-description">Faithful ten percent of your income dedicated to God</div>
+              </div>
+              <div class="option" data-value="partnership">
+                <div class="option-title">Partnership</div>
+                <div class="option-description">Helping us reach more souls through outreach and missions</div>
+              </div>
+              <div class="option" data-value="support">
+                <div class="option-title">Support</div>
+                <div class="option-description">Assist with church projects, renovations, and upkeep</div>
+              </div>
+              <div class="option" data-value="seed">
+                <div class="option-title">Seed Offering</div>
+                <div class="option-description">Sow into God's work with a special sacrificial seed</div>
+              </div>
+              <div class="option" data-value="first-fruit">
+                <div class="option-title">First Fruit</div>
+                <div class="option-description">Honor God with the first increase of your harvest</div>
+              </div>
+            </div>
+          </div>
+          <div class="giving-offering-desc" id="giving-offering-desc">
+            <p id="offering-description"></p>
+          </div>
         </div>
 
         <div class="giving-step">
@@ -386,9 +478,11 @@
       const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
       const navbar = document.getElementById('navbar');
       
-      mobileMenuToggle.addEventListener('click', () => {
-        navbar.classList.toggle('active');
-      });
+      if (mobileMenuToggle && navbar) {
+        mobileMenuToggle.addEventListener('click', () => {
+          navbar.classList.toggle('active');
+        });
+      }
 
       // Amount selection
       const amountBtns = document.querySelectorAll(".giving-amount-btn");
@@ -409,6 +503,56 @@
         selectedAmount = this.value;
       });
 
+      // Custom Dropdown Functionality
+      const selectHeader = document.getElementById('select-header');
+      const selectOptions = document.getElementById('select-options');
+      const options = document.querySelectorAll('.option');
+      const selectedOption = document.querySelector('.selected-option');
+      const chevron = document.querySelector('.chevron');
+      const offeringDesc = document.getElementById('giving-offering-desc');
+      const offeringDescription = document.getElementById('offering-description');
+      let selectedFund = null;
+      
+      // Toggle dropdown
+      selectHeader.addEventListener('click', function() {
+        selectOptions.classList.toggle('active');
+        selectHeader.classList.toggle('active');
+        chevron.classList.toggle('rotated');
+      });
+      
+      // Select an option
+      options.forEach(option => {
+        option.addEventListener('click', function() {
+          const title = this.querySelector('.option-title').textContent;
+          const description = this.querySelector('.option-description').textContent;
+          
+          selectedOption.textContent = title;
+          offeringDescription.textContent = description;
+          offeringDesc.classList.add('active');
+          selectedFund = this.dataset.value;
+          
+          // Close dropdown
+          selectOptions.classList.remove('active');
+          selectHeader.classList.remove('active');
+          chevron.classList.remove('rotated');
+          
+          // Remove any previously selected option
+          options.forEach(opt => opt.classList.remove('selected'));
+          
+          // Mark this option as selected
+          this.classList.add('selected');
+        });
+      });
+      
+      // Close dropdown when clicking outside
+      document.addEventListener('click', function(event) {
+        if (!selectHeader.contains(event.target) && !selectOptions.contains(event.target)) {
+          selectOptions.classList.remove('active');
+          selectHeader.classList.remove('active');
+          chevron.classList.remove('rotated');
+        }
+      });
+
       // PayStack Payment
       document.getElementById("giving-paystack-btn").addEventListener("click", function () {
         const amount = selectedAmount || customAmount.value;
@@ -417,7 +561,10 @@
           return;
         }
 
-        const fund = document.getElementById("giving-fund-select").value;
+        if (!selectedFund) {
+          alert("Please select a giving type");
+          return;
+        }
 
         const handler = PaystackPop.setup({
           key: "pk_test_your_paystack_key", // Replace with your PayStack public key
@@ -430,7 +577,7 @@
               {
                 display_name: "Fund",
                 variable_name: "fund",
-                value: fund,
+                value: selectedFund,
               },
             ],
           },
@@ -453,45 +600,15 @@
           return;
         }
 
+        if (!selectedFund) {
+          alert("Please select a giving type");
+          return;
+        }
+
         // In a real implementation, you would use PayPal's SDK
         alert("Redirecting to PayPal...");
         // This is a placeholder - see below for actual PayPal integration
       });
     </script>
-
-    <!-- PayPal Integration (Uncomment and configure) -->
-    <!--
-    <script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID&currency=USD"></script>
-    <script>
-        paypal.Buttons({
-            style: {
-                layout: 'vertical',
-                color: 'blue',
-                shape: 'rect',
-                label: 'paypal'
-            },
-            createOrder: function(data, actions) {
-                const amount = selectedAmount || customAmount.value;
-                const fund = document.getElementById('giving-fund-select').value;
-                
-                return actions.order.create({
-                    purchase_units: [{
-                        amount: {
-                            value: (amount / 1000).toFixed(2), // Convert to USD (example rate)
-                            currency_code: 'USD'
-                        },
-                        description: 'Church Donation: ' + fund
-                    }]
-                });
-            },
-            onApprove: function(data, actions) {
-                return actions.order.capture().then(function(details) {
-                    alert('Donation completed by ' + details.payer.name.given_name);
-                    // Redirect to thank you page
-                });
-            }
-        }).render('#giving-paypal-btn');
-    </script>
-    -->
   </body>
 </html>
