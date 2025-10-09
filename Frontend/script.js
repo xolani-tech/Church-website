@@ -109,4 +109,90 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+// Fetch events from your backend API
+async function fetchEvents() {
+    try {
+        const response = await fetch('http://localhost:5000/api/events');
+        
+        if (!response.ok) {
+            throw new Error('Failed to fetch events');
+        }
+        
+        const events = await response.json();
+        displayEvents(events);
+        
+    } catch (error) {
+        console.error('Error fetching events:', error);
+        showError('Unable to load events. Please try again later.');
+    }
+}
 
+// Display events in the DOM
+function displayEvents(events) {
+    const container = document.getElementById('events-container');
+    const noEvents = document.getElementById('no-events');
+    
+    // Clear loading state
+    container.innerHTML = '';
+    
+    if (!events || events.length === 0) {
+        noEvents.style.display = 'block';
+        return;
+    }
+    
+    // Sort events by date (soonest first)
+    events.sort((a, b) => new Date(a.date) - new Date(b.date));
+    
+    // Create event items
+    events.forEach(event => {
+        const eventDate = new Date(event.date);
+        const eventItem = createEventItem(event, eventDate);
+        container.appendChild(eventItem);
+    });
+}
+
+// Create individual event item HTML
+function createEventItem(event, eventDate) {
+    const eventDiv = document.createElement('div');
+    eventDiv.className = 'event-item';
+    
+    const month = eventDate.toLocaleDateString('en-US', { month: 'short' }).toUpperCase();
+    const day = eventDate.getDate();
+    
+    eventDiv.innerHTML = `
+        <div class="event-date">
+            <span>${month}</span>
+            <strong>${day}</strong>
+        </div>
+        <div class="event-details">
+            <h4>${event.title || 'Untitled Event'}</h4>
+            <p>
+                <i class="far fa-clock"></i> ${eventDate.toLocaleTimeString('en-US', { 
+                    hour: 'numeric', 
+                    minute: '2-digit',
+                    hour12: true 
+                })} 
+                ${event.location ? `| <i class="fas fa-map-marker-alt"></i> ${event.location}` : ''}
+            </p>
+            ${event.description ? `<p>${event.description}</p>` : ''}
+        </div>
+    `;
+    
+    return eventDiv;
+}
+
+// Show error message
+function showError(message) {
+    const container = document.getElementById('events-container');
+    container.innerHTML = `
+        <div class="error-message">
+            <i class="fas fa-exclamation-triangle"></i>
+            <p>${message}</p>
+        </div>
+    `;
+}
+
+// Load events when page is ready
+document.addEventListener('DOMContentLoaded', function() {
+    fetchEvents();
+});
