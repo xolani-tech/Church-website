@@ -108,3 +108,5 @@ document.addEventListener('DOMContentLoaded', function() {
     setInterval(changeSlide, 5000); // Change slide every 7 seconds
 });
 
+
+
