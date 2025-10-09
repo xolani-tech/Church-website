@@ -40,6 +40,9 @@ const startServer = async () => {
 const eventRoutes = require("./Routes/eventRoutes");
 app.use("/api/events", eventRoutes);
 
+const semonRoutes =requi("./Routes/sermonRoutes");
+app.use("/api/events", semonRoutes);
+
 // Basic test route
 app.get("/", (req, res) => res.send("API is running..."));
 
