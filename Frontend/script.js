@@ -196,3 +196,89 @@ function showError(message) {
 document.addEventListener('DOMContentLoaded', function() {
     fetchEvents();
 });
+
+// Fix the fetch URL - add the missing 's'
+async function fetchSermons() {
+    try {
+        const response = await fetch('http://localhost:5000/api/sermons?limit=3'); // ✅ Fixed: /api/sermons (with 's')
+        
+        if (!response.ok) {
+            throw new Error('Failed to fetch sermons');
+        }
+        
+        const sermons = await response.json();
+        displaySermons(sermons);
+        
+    } catch (error) {
+        console.error('Error fetching sermons:', error);
+        showSermonsError('Unable to load sermons. Please try again later.');
+    }
+}
+
+// Display sermons in the DOM
+function displaySermons(sermons) {
+    const container = document.getElementById('sermons-container');
+    const noSermons = document.getElementById('no-sermons');
+    
+    // Clear loading state
+    container.innerHTML = '';
+    
+    if (!sermons || sermons.length === 0) {
+        noSermons.style.display = 'block';
+        return;
+    }
+    
+    // Create sermon cards
+    sermons.forEach(sermon => {
+        const sermonCard = createSermonCard(sermon);
+        container.appendChild(sermonCard);
+    });
+}
+
+// Create individual sermon card HTML
+function createSermonCard(sermon) {
+    const sermonDiv = document.createElement('div');
+    sermonDiv.className = 'sermon-card';
+    
+    const sermonDate = new Date(sermon.date);
+    const formattedDate = sermonDate.toLocaleDateString('en-US', { 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric' 
+    });
+    
+    sermonDiv.innerHTML = `
+        <div class="sermon-thumbnail">
+            <img src="${sermon.thumbnail || 'https://images.unsplash.com/photo-1555696958-c5664b8d15e4?q=80&w=800&auto=format&fit=crop'}" 
+                 alt="${sermon.title}">
+            <div class="play-icon"><i class="fas fa-play"></i></div>
+            ${sermon.duration ? `<div class="duration">${sermon.duration}</div>` : ''}
+        </div>
+        <div class="sermon-info">
+            <h4>${sermon.title}</h4>
+            <p>Speaker: ${sermon.speaker}</p>
+            ${sermon.scripture ? `<p class="scripture">${sermon.scripture}</p>` : ''}
+            <p class="sermon-date">${formattedDate}</p>
+            <a href="${sermon.videoUrl}" target="_blank" class="btn-watch">Watch Now</a>
+        </div>
+    `;
+    
+    return sermonDiv;
+}
+
+// Show error message for sermons
+function showSermonsError(message) {
+    const container = document.getElementById('sermons-container');
+    container.innerHTML = `
+        <div class="error-message">
+            <i class="fas fa-exclamation-triangle"></i>
+            <p>${message}</p>
+        </div>
+    `;
+}
+
+// Update your existing DOMContentLoaded event
+document.addEventListener('DOMContentLoaded', function() {
+    fetchEvents();
+    fetchSermons(); // Add this line
+});

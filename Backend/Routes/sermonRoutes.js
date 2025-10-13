@@ -2,31 +2,21 @@ const express = require("express");
 const router = express.Router();
 const Sermon = require("../Models/sermonModels");
 
-// GET all sermons (with optional filtering)
+// GET all sermons
 router.get("/", async (req, res) => {
   try {
-    const { category, featured, limit } = req.query;
+    console.log("GET /api/sermons - Fetching sermons");
     
-    let query = {};
+    const { limit } = req.query;
+    let sermonsQuery = Sermon.find().sort({ date: -1 });
     
-    // Filter by category if provided
-    if (category) {
-      query.category = category;
-    }
-    
-    // Filter featured sermons if requested
-    if (featured === 'true') {
-      query.isFeatured = true;
-    }
-    
-    let sermonsQuery = Sermon.find(query).sort({ date: -1 });
-    
-    // Limit results if specified
     if (limit) {
       sermonsQuery = sermonsQuery.limit(parseInt(limit));
     }
     
     const sermons = await sermonsQuery;
+    console.log(`Found ${sermons.length} sermons`);
+    
     res.status(200).json(sermons);
     
   } catch (error) {
@@ -35,65 +25,20 @@ router.get("/", async (req, res) => {
   }
 });
 
-// GET single sermon by ID
-router.get("/:id", async (req, res) => {
-  try {
-    const sermon = await Sermon.findById(req.params.id);
-    if (!sermon) {
-      return res.status(404).json({ message: "Sermon not found" });
-    }
-    res.status(200).json(sermon);
-  } catch (error) {
-    console.error("Error fetching sermon:", error);
-    res.status(500).json({ message: error.message });
-  }
-});
-
 // POST create new sermon
 router.post("/", async (req, res) => {
   try {
+    console.log("POST /api/sermons - Creating new sermon");
+    
     const sermon = new Sermon(req.body);
     const savedSermon = await sermon.save();
+    
+    console.log("Sermon created successfully:", savedSermon._id);
     res.status(201).json(savedSermon);
+    
   } catch (error) {
     console.error("Error creating sermon:", error);
     res.status(400).json({ message: error.message });
-  }
-});
-
-// PUT update sermon
-router.put("/:id", async (req, res) => {
-  try {
-    const sermon = await Sermon.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      { new: true, runValidators: true }
-    );
-    
-    if (!sermon) {
-      return res.status(404).json({ message: "Sermon not found" });
-    }
-    
-    res.status(200).json(sermon);
-  } catch (error) {
-    console.error("Error updating sermon:", error);
-    res.status(400).json({ message: error.message });
-  }
-});
-
-// DELETE sermon
-router.delete("/:id", async (req, res) => {
-  try {
-    const sermon = await Sermon.findByIdAndDelete(req.params.id);
-    
-    if (!sermon) {
-      return res.status(404).json({ message: "Sermon not found" });
-    }
-    
-    res.status(200).json({ message: "Sermon deleted successfully" });
-  } catch (error) {
-    console.error("Error deleting sermon:", error);
-    res.status(500).json({ message: error.message });
   }
 });
 

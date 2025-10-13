@@ -23,13 +23,16 @@ const sermonSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  videoId: {
+    type: String,
+    required: true
+  },
   thumbnail: {
-    type: String, // URL to thumbnail image
-    default: ""
+    type: String
   },
   duration: {
-    type: String, // e.g., "45:30"
-    default: ""
+    type: String,
+    default: "45:00"
   },
   category: {
     type: String,
@@ -37,7 +40,7 @@ const sermonSchema = new mongoose.Schema({
     default: 'sunday-service'
   },
   scripture: {
-    type: String, // Main scripture reference
+    type: String,
     default: ""
   },
   isFeatured: {
@@ -46,6 +49,15 @@ const sermonSchema = new mongoose.Schema({
   }
 }, {
   timestamps: true
+});
+
+// ✅ Improved pre-save middleware for thumbnails
+sermonSchema.pre('save', function(next) {
+  if (this.videoId && !this.thumbnail) {
+    // Generate YouTube thumbnail URL - try multiple qualities
+    this.thumbnail = `https://img.youtube.com/vi/${this.videoId}/maxresdefault.jpg`;
+  }
+  next();
 });
 
 module.exports = mongoose.model("Sermon", sermonSchema);

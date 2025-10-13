@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blog | NJIM</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="/styling/style.css"/>
+  <link rel="icon" type="image/png" href="../Images/another_logo.png">
+
+  <style>
+    /* --- Blog Page Styles --- */
+    #blog {
+      padding: 120px 0;
+    }
+    .blog-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .blog-card {
+      background: var(--brand-light);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .blog-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    .blog-thumbnail img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .blog-info {
+      padding: 1.5rem;
+    }
+    .blog-info h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+      color: var(--brand-dark);
+    }
+    .blog-info .blog-date {
+      font-size: 0.9rem;
+      font-style: italic;
+      color: var(--brand-gray);
+      margin-bottom: 1rem;
+    }
+    .blog-info p {
+      color: var(--text-dark);
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      line-height: 1.5;
+    }
+    .btn-read-more {
+      padding: 8px 20px;
+      background: var(--brand-gold);
+      color: var(--brand-dark);
+      border-radius: 4px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+    .btn-read-more:hover {
+      background: #c19b2c;
+    }
+
+    @media (max-width: 768px) {
+      #blog {
+        padding: 80px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar / Header -->
+  <header id="header">
+    <div class="container">
+      <a href="index.html" class="logo">NEW JERUSALEM</a>
+      <nav id="navbar">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="Live_Stream.html">Sermons</a></li>
+          <li><a href="blog.html" style="color: var(--brand-gold)">Blog</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="/Frontend/giving.html" target="_blank">Giving</a></li>
+        </ul>
+      </nav>
+      <button id="mobile-menu-toggle" aria-label="Toggle navigation menu">
+        <span class="hamburger-icon"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Blog Section -->
+  <section id="blog">
+    <div class="blog-container">
+      <h2 class="section-title">Our Blog</h2>
+      <p class="section-subtitle">Insights, reflections, and teachings from NJIM</p>
+
+      <div class="blog-grid">
+        <div class="blog-card">
+          <div class="blog-thumbnail">
+            <img src="https://images.unsplash.com/photo-1581093588401-20471a6d9d1c" alt="Blog Post 1">
+          </div>
+          <div class="blog-info">
+            <h4>Faith in Times of Challenge</h4>
+            <div class="blog-date">14 October 2025</div>
+            <p>Explore how maintaining faith can guide us through life’s most difficult moments and strengthen our spiritual journey.</p>
+            <a href="#" class="btn-read-more">Read More →</a>
+          </div>
+        </div>
+
+        <div class="blog-card">
+          <div class="blog-thumbnail">
+            <img src="https://images.unsplash.com/photo-1529686342230-bf7d4c9122f0" alt="Blog Post 2">
+          </div>
+          <div class="blog-info">
+            <h4>Understanding the Word</h4>
+            <div class="blog-date">10 October 2025</div>
+            <p>Delve into the scriptures and learn practical ways to apply biblical teachings in everyday life.</p>
+            <a href="#" class="btn-read-more">Read More →</a>
+          </div>
+        </div>
+
+        <div class="blog-card">
+          <div class="blog-thumbnail">
+            <img src="https://images.unsplash.com/photo-1600378831959-df2b56c58e78" alt="Blog Post 3">
+          </div>
+          <div class="blog-info">
+            <h4>Community and Fellowship</h4>
+            <div class="blog-date">5 October 2025</div>
+            <p>Discover the importance of coming together as a community and supporting one another in faith and love.</p>
+            <a href="#" class="btn-read-more">Read More →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="footer">
+    <div class="container footer-grid">
+      <div class="footer-column">
+        <h4>About NJIM</h4>
+        <p>A community of believers dedicated to growing in faith and serving the world with the love of Christ.</p>
+      </div>
+      <div class="footer-column">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="/#about">About Us</a></li>
+          <li><a href="/Frontend/Live_Stream.html">Sermons</a></li>
+          <li><a href="/#events">Events</a></li>
+          <li><a href="/#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Connect With Us</h4>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/NewJerusalemMinistr" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/messaiahchannel/" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.youtube.com/@messiahchannel6023" target="_blank"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+      <div class="footer-column">
+        <h4>Service Times</h4>
+        <p><strong>Sunday:</strong> 9:00 AM & 11:00 AM</p>
+        <p><strong>Wednesday:</strong> 6:00 PM Bible Study</p>
+        <p><strong>Friday:</strong> 6:00 PM Deliverence Service</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 NJIM - The Holy City of God. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

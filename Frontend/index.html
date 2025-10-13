@@ -79,7 +79,7 @@
                     <h1 class="hero-title">For The Word Of God Is Living And Active,</h1>
                     <p class="hero-subtitle">sharper than any two-edged sword, piercing to the division of soul and of spirit...</p>
                     <div class="hero-buttons">
-                        <a href="#" class="btn btn-primary">Join Us Now</a>
+                        <a href="https://www.youtube.com/@messiahchannel6023" target="_blank" class="btn btn-primary">Join Us Now</a>
                         <a href="#" class="btn btn-secondary">Read More</a>
                     </div>
                 </div>
@@ -102,50 +102,25 @@
         </section>
         
         <section id="sermons" class="content-section fade-in-section alt-bg">
-            <div class="container">
-                <h2 class="section-title">Latest Sermons</h2>
-                <p class="section-subtitle">Listen to messages of hope and encouragement.</p>
-                <div class="sermon-grid">
-                    <div class="sermon-card">
-                        <div class="sermon-thumbnail">
-                            <img src="https://images.unsplash.com/photo-1555696958-c5664b8d15e4?q=80&w=800&auto=format&fit=crop" alt="Sermon thumbnail">
-                            <div class="play-icon"><i class="fas fa-play"></i></div>
-                        </div>
-                        <div class="sermon-info">
-                            <h4>The Power of Forgiveness</h4>
-                            <p>Speaker: Pastor John Doe</p>
-                            <p class="sermon-date">October 29, 2023</p>
-                            <a href="#" class="btn-watch">Watch Now</a>
-                        </div>
-                    </div>
-                    <div class="sermon-card">
-                        <div class="sermon-thumbnail">
-                            <img src="https://images.unsplash.com/photo-1519734281829-78433b96a1a9?q=80&w=800&auto=format&fit=crop" alt="Sermon thumbnail">
-                            <div class="play-icon"><i class="fas fa-play"></i></div>
-                        </div>
-                        <div class="sermon-info">
-                            <h4>Living a Life of Purpose</h4>
-                            <p>Speaker: Pastor Jane Smith</p>
-                            <p class="sermon-date">October 22, 2023</p>
-                            <a href="#" class="btn-watch">Watch Now</a>
-                        </div>
-                    </div>
-                    <div class="sermon-card">
-                        <div class="sermon-thumbnail">
-                            <img src="https://images.unsplash.com/photo-1504252159393-f3233071492a?q=80&w=800&auto=format&fit=crop" alt="Sermon thumbnail">
-                            <div class="play-icon"><i class="fas fa-play"></i></div>
-                        </div>
-                        <div class="sermon-info">
-                            <h4>Faith in Times of Trial</h4>
-                            <p>Speaker: Pastor John Doe</p>
-                            <p class="sermon-date">October 15, 2023</p>
-                            <a href="#" class="btn-watch">Watch Now</a>
-                        </div>
-                    </div>
-                </div>
-                <a href="#" class="btn btn-primary" style="margin-top: 2rem;">View All Sermons</a>
+    <div class="container">
+        <h2 class="section-title">Latest Sermons</h2>
+        <p class="section-subtitle">Listen to messages of hope and encouragement.</p>
+        
+        <div id="sermons-container" class="sermon-grid">
+            <!-- Sermons will be loaded here dynamically -->
+            <div class="loading-sermons">
+                <i class="fas fa-spinner fa-spin"></i>
+                <p>Loading sermons...</p>
             </div>
-        </section>
+        </div>
+        
+        <div id="no-sermons" class="no-sermons-message" style="display: none;">
+            <p>No sermons available at the moment. Please check back soon!</p>
+        </div>
+        
+        <a href="/Frontend/Live_Stream.html" class="btn btn-primary" style="margin-top: 2rem;">View All Sermons</a>
+    </div>
+</section>
 
        <section id="events" class="content-section fade-in-section">
     <div class="container">
@@ -201,6 +176,7 @@
                     <li><a href="#sermons">Sermons</a></li>
                     <li><a href="#events">Events</a></li>
                     <li><a href="#contact">Contact</a></li>
+                    <li><a href="blog.html">Blog</a></li>
                 </ul>
             </div>
             <div class="footer-column">
