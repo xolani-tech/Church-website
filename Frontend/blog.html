@@ -1,190 +1,414 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Blog | NJIM</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-  <link rel="stylesheet" href="/styling/style.css"/>
-  <link rel="icon" type="image/png" href="../Images/another_logo.png">
-
-  <style>
-    /* --- Blog Page Styles --- */
-    #blog {
-      padding: 120px 0;
-    }
-    .blog-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-    .blog-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-    .blog-card {
-      background: var(--brand-light);
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .blog-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    }
-    .blog-thumbnail img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
-    .blog-info {
-      padding: 1.5rem;
-    }
-    .blog-info h4 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.4rem;
-      margin-bottom: 0.5rem;
-      color: var(--brand-dark);
-    }
-    .blog-info .blog-date {
-      font-size: 0.9rem;
-      font-style: italic;
-      color: var(--brand-gray);
-      margin-bottom: 1rem;
-    }
-    .blog-info p {
-      color: var(--text-dark);
-      font-size: 1rem;
-      margin-bottom: 1rem;
-      line-height: 1.5;
-    }
-    .btn-read-more {
-      padding: 8px 20px;
-      background: var(--brand-gold);
-      color: var(--brand-dark);
-      border-radius: 4px;
-      font-weight: 700;
-      text-decoration: none;
-      transition: background 0.3s;
-    }
-    .btn-read-more:hover {
-      background: #c19b2c;
-    }
-
-    @media (max-width: 768px) {
-      #blog {
-        padding: 80px 0;
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog - New Jerusalem International Ministries</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Playfair+Display:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styling/style.css">
+    <style>
+      :root {
+        --brand-gold: #f0ad4e;
+        --brand-dark: #1a1a1a;
+        --brand-light: #f8f9fa;
+        --brand-gray: #6c757d;
+        --text-light: #ffffff;
+        --text-dark: #333333;
+        --header-height: 80px;
+        --bg-alt: #f1f3f5;
       }
-    }
-  </style>
-</head>
-<body>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Montserrat", sans-serif;
+        background-color: var(--brand-light);
+        color: var(--text-dark);
+        line-height: 1.6;
+        scroll-behavior: smooth;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: "Playfair Display", serif;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+        transition: color 0.3s ease;
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+      .top-line {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background-color: var(--brand-gold);
+        z-index: 1001;
+      }
+      #header {
+        position: fixed;
+        top: 4px;
+        left: 0;
+        width: 100%;
+        height: var(--header-height);
+        display: flex;
+        align-items: center;
+        z-index: 1000;
+        background-color: var(--brand-light);
+      }
+      #header .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+      }
+      .logo {
+        font-family: "Playfair Display", serif;
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--text-dark);
+      }
+      #hero {
+        height: 50vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-image: url("/Images/blog_pic.jpg");
+        background-size: cover;
+        background-position: center;
+        color: var(--text-light);
+        text-align: center;
+      }
+      #hero h1 {
+        font-size: 3rem;
+      }
+      #hero p {
+        font-size: 1.2rem;
+      }
 
-  <!-- Navbar / Header -->
-  <header id="header">
-    <div class="container">
-      <a href="index.html" class="logo">NEW JERUSALEM</a>
-      <nav id="navbar">
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="Live_Stream.html">Sermons</a></li>
-          <li><a href="blog.html" style="color: var(--brand-gold)">Blog</a></li>
-          <li><a href="events.html">Events</a></li>
-          <li><a href="/Frontend/giving.html" target="_blank">Giving</a></li>
-        </ul>
-      </nav>
-      <button id="mobile-menu-toggle" aria-label="Toggle navigation menu">
-        <span class="hamburger-icon"></span>
-      </button>
-    </div>
-  </header>
+      .blog-container {
+        padding: 120px 0;
+      }
+      .section-title {
+        font-size: 2.8rem;
+        text-align: center;
+        margin-bottom: 0.5rem;
+      }
+      .section-subtitle {
+        text-align: center;
+        font-size: 1.1rem;
+        color: var(--brand-gray);
+        margin-bottom: 4rem;
+      }
+      .blog-rows {
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
+      }
+      .blog-row {
+        display: flex;
+        gap: 2rem;
+        background: var(--brand-light);
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        flex-direction: row;
+      }
+      .blog-row:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      }
+      .blog-thumbnail img {
+        width: 300px;
+        height: 200px;
+        object-fit: cover;
+      }
+      .blog-info {
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        flex: 1;
+      }
+      .blog-info h4 {
+        font-family: "Playfair Display", serif;
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+        color: var(--brand-dark);
+      }
+      .blog-date {
+        font-size: 0.9rem;
+        color: var(--brand-gray);
+        margin-bottom: 1rem;
+      }
+      .blog-info p {
+        color: var(--text-dark);
+        font-size: 1rem;
+        line-height: 1.5;
+        margin-bottom: 1.2rem;
+      }
+      .full-text {
+        display: none;
+        margin-top: 1rem;
+        color: var(--text-dark);
+      }
+      .btn-read-more {
+        padding: 8px 20px;
+        background: var(--brand-gold);
+        color: var(--brand-dark);
+        font-weight: 700;
+        text-decoration: none;
+        border-radius: 6px;
+        text-align: center;
+        width: fit-content;
+        transition: background 0.3s;
+        cursor: pointer;
+      }
+      .btn-read-more:hover {
+        background: #c19b2c;
+      }
 
-  <!-- Blog Section -->
-  <section id="blog">
-    <div class="blog-container">
-      <h2 class="section-title">Our Blog</h2>
-      <p class="section-subtitle">Insights, reflections, and teachings from NJIM</p>
+      #footer {
+        background: var(--brand-dark);
+        color: var(--brand-light);
+        padding-top: 4rem;
+      }
+      .footer-bottom {
+        border-top: 1px solid #333;
+        padding: 1.5rem 0;
+        text-align: center;
+        font-size: 0.9rem;
+        color: var(--brand-gray);
+      }
 
-      <div class="blog-grid">
-        <div class="blog-card">
+      @media (max-width: 768px) {
+        .blog-row {
+          flex-direction: column;
+        }
+        .blog-thumbnail img {
+          width: 100%;
+          height: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="top-line"></div>
+    <header id="header">
+        <div class="container">
+            <a href="#" class="logo">NEW JERUSALEM</a>
+            <nav id="navbar">
+                <ul class="nav-links">
+                    <li><a href="/Frontend/index.html">Home</a></li>
+                    <li><a href="/Frontend/about.html">About</a></li>
+                    <li><a href="/Frontend/Live_Stream.html">Sermons</a></li>
+                    <li class="mega-menu-item">
+                        <a href="#ministries">Ministries &#9662;</a>
+                        <div class="mega-menu">
+                            <div class="mega-menu-content">
+                                <div class="mega-menu-column">
+                                    <h3>Community Groups</h3>
+                                    <a href="#">Men’s Ministry</a>
+                                    <a href="#">Women’s Ministry</a>
+                                    <a href="#">Youth Group</a>
+                                    <a href="/Frontend/blog.html">Blog</a>
+                                </div>
+                                <div class="mega-menu-column">
+                                    <h3>Outreach</h3>
+                                    <a href="#">Local Missions</a>
+                                    <a href="#">Global Missions</a>
+                                    <a href="#">Food Pantry</a>
+                                    <a href="#">Community Service</a>
+                                </div>
+                                <div class="mega-menu-column">
+                                    <h3>Education</h3>
+                                    <a href="#">Bible Studies</a>
+                                    <a href="#">Sunday School</a>
+                                    <a href="#">New Believers Class</a>
+                                    <a href="#">Theology Seminars</a>
+                                </div>
+                                <div class="mega-menu-column featured-column">
+                                    <img src="/Images/Nj youth.jpg" alt="Children's Ministry">
+                                    <h4>Children's Ministry</h4>
+                                    <p>Programs available for all ages.</p>
+                                    <a href="#" class="btn-learn-more">Learn More &rarr;</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="Events.html">Events</a></li>
+                    <button class="btn btn-primary">
+                    <li><a href="/Frontend/giving.html" target="_blank">Giving</a></li>
+                    </button>
+                </ul>
+            </nav>
+            <button id="mobile-menu-toggle">
+                <span class="hamburger-icon"></span>
+            </button>
+        </div>
+    </header>
+
+    <section id="hero">
+      <div class="hero-content">
+        <h1>Our Blog</h1>
+        <p>
+          Insights, reflections, and teachings from New Jerusalem International
+          Ministries
+        </p>
+      </div>
+    </section>
+
+    <section id="blog" class="blog-container container">
+      <h2 class="section-title">Latest Posts</h2>
+      <p class="section-subtitle">
+        Stay updated with our latest sermons, teachings, and events
+      </p>
+
+      <div class="blog-rows">
+        <!-- Blog Row 1 -->
+        <div class="blog-row">
           <div class="blog-thumbnail">
-            <img src="https://images.unsplash.com/photo-1581093588401-20471a6d9d1c" alt="Blog Post 1">
+            <img
+              src="https://images.unsplash.com/photo-1581093588401-df2b56c58e78"
+              alt="Faith in Times of Challenge"
+            />
           </div>
           <div class="blog-info">
             <h4>Faith in Times of Challenge</h4>
             <div class="blog-date">14 October 2025</div>
-            <p>Explore how maintaining faith can guide us through life’s most difficult moments and strengthen our spiritual journey.</p>
-            <a href="#" class="btn-read-more">Read More →</a>
+            <p class="excerpt">
+              Maintaining faith can guide us through life’s most difficult
+              moments and strengthen our spiritual journey.
+            </p>
+            <p class="full-text">
+              In this article, we explore practical ways to remain strong during
+              challenging times, including prayer, reflection, and community
+              support. Real-life testimonies and scriptural references inspire
+              hope and resilience.
+            </p>
+            <span class="btn-read-more">Read More →</span>
           </div>
         </div>
 
-        <div class="blog-card">
+        <!-- Blog Row 2 -->
+        <div class="blog-row">
           <div class="blog-thumbnail">
-            <img src="https://images.unsplash.com/photo-1529686342230-bf7d4c9122f0" alt="Blog Post 2">
+            <img
+              src="https://images.unsplash.com/photo-1529686342230-bf7d4c9122f0"
+              alt="Understanding the Word"
+            />
           </div>
           <div class="blog-info">
             <h4>Understanding the Word</h4>
             <div class="blog-date">10 October 2025</div>
-            <p>Delve into the scriptures and learn practical ways to apply biblical teachings in everyday life.</p>
-            <a href="#" class="btn-read-more">Read More →</a>
+            <p class="excerpt">
+              Delve into the scriptures and learn practical ways to apply
+              biblical teachings in everyday life.
+            </p>
+            <p class="full-text">
+              This post discusses study techniques, meditation on the Word, and
+              how to live out biblical principles daily. Discover actionable
+              steps to deepen your understanding and relationship with God.
+            </p>
+            <span class="btn-read-more">Read More →</span>
           </div>
         </div>
 
-        <div class="blog-card">
+        <!-- Blog Row 3 -->
+        <div class="blog-row">
           <div class="blog-thumbnail">
-            <img src="https://images.unsplash.com/photo-1600378831959-df2b56c58e78" alt="Blog Post 3">
+            <img
+              src="https://images.unsplash.com/photo-1600378831959-df2b56c58e78"
+              alt="Community and Fellowship"
+            />
           </div>
           <div class="blog-info">
             <h4>Community and Fellowship</h4>
             <div class="blog-date">5 October 2025</div>
-            <p>Discover the importance of coming together as a community and supporting one another in faith and love.</p>
-            <a href="#" class="btn-read-more">Read More →</a>
+            <p class="excerpt">
+              Discover the importance of coming together as a community and
+              supporting one another in faith and love.
+            </p>
+            <p class="full-text">
+              Learn the benefits of fellowship, communal worship, and service
+              projects. We provide guidance on building meaningful relationships
+              that foster spiritual growth.
+            </p>
+            <span class="btn-read-more">Read More →</span>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Footer -->
-  <footer id="footer">
-    <div class="container footer-grid">
-      <div class="footer-column">
-        <h4>About NJIM</h4>
-        <p>A community of believers dedicated to growing in faith and serving the world with the love of Christ.</p>
-      </div>
-      <div class="footer-column">
-        <h4>Quick Links</h4>
-        <ul>
-          <li><a href="/#about">About Us</a></li>
-          <li><a href="/Frontend/Live_Stream.html">Sermons</a></li>
-          <li><a href="/#events">Events</a></li>
-          <li><a href="/#contact">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer-column">
-        <h4>Connect With Us</h4>
-        <div class="social-icons">
-          <a href="https://www.facebook.com/NewJerusalemMinistr" target="_blank"><i class="fab fa-facebook-f"></i></a>
-          <a href="https://www.instagram.com/messaiahchannel/" target="_blank"><i class="fab fa-instagram"></i></a>
-          <a href="https://www.youtube.com/@messiahchannel6023" target="_blank"><i class="fab fa-youtube"></i></a>
-          <a href="#"><i class="fab fa-tiktok"></i></a>
+    <footer id="footer">
+         <div class="container footer-grid">
+            <div class="footer-column">
+                <h4>About NJIM</h4>
+                <p>A community of believers dedicated to growing in faith and serving the world with the love of Christ.</p>
+            </div>
+            <div class="footer-column">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#sermons">Sermons</a></li>
+                    <li><a href="#events">Events</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Connect With Us</h4>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/NewJerusalemMinistr" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/messaiahchannel/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/@messiahchannel6023" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.tiktok.com/@njerusalemministry" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h4>Service Times</h4>
+                <p><strong>Sunday:</strong> 9:00 AM & 11:00 AM</p>
+                <p><strong>Wednesday:</strong> 6:00 PM Bible Study</p>
+                <p><strong>Friday:</strong> 6:00 PM Deliverence service</p>
+            </div>
         </div>
+      <div class="container footer-bottom">
+        &copy; 2025 New Jerusalem International Ministries. All Rights Reserved.
       </div>
-      <div class="footer-column">
-        <h4>Service Times</h4>
-        <p><strong>Sunday:</strong> 9:00 AM & 11:00 AM</p>
-        <p><strong>Wednesday:</strong> 6:00 PM Bible Study</p>
-        <p><strong>Friday:</strong> 6:00 PM Deliverence Service</p>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2025 NJIM - The Holy City of God. All Rights Reserved.</p>
-    </div>
-  </footer>
+    </footer>
 
-</body>
+    <script>
+      const readMoreButtons = document.querySelectorAll(".btn-read-more");
+      readMoreButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const fullText = btn.previousElementSibling; // the .full-text paragraph
+          if (fullText.style.display === "block") {
+            fullText.style.display = "none";
+            btn.textContent = "Read More →";
+          } else {
+            fullText.style.display = "block";
+            btn.textContent = "Read Less ←";
+          }
+        });
+      });
+    </script>
+  </body>
 </html>
