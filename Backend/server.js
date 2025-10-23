@@ -15,11 +15,12 @@ console.log("MONGO_URI:", process.env.MONGO_URI ? "Loaded successfully" : "❌ N
 
 // ========== MOVE ROUTES UP HERE - BEFORE startServer() ==========
 const eventRoutes = require("./Routes/eventRoutes");
-const sermonRoutes = require("./Routes/sermonRoutes");  // ✅ Fixed spelling
+const sermonRoutes = require("./Routes/sermonRoutes"); 
+const blogRoutes = require("./Routes/blogRoutes");
 
 app.use("/api/events", eventRoutes);
-app.use("/api/sermons", sermonRoutes);  // ✅ Fixed spelling
-
+app.use("/api/sermons", sermonRoutes); 
+app.use("/api/blogs", blogRoutes)
 console.log("✅ Routes registered");
 // ========== END ROUTES ==========
 
