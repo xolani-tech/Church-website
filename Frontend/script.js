@@ -282,3 +282,24 @@ document.addEventListener('DOMContentLoaded', function() {
     fetchEvents();
     fetchSermons(); // Add this line
 });
+
+// --- Mobile Menu JS ---
+const mobileToggle = document.getElementById('mobile-menu-toggle');
+const body = document.body;
+mobileToggle.addEventListener('click', () => {
+    body.classList.toggle('mobile-nav-open');
+});
+
+// Handle sub-menu toggle on mobile
+document.querySelectorAll('#navbar .nav-links > li > a').forEach(link => {
+    link.addEventListener('click', function(e) {
+        if(window.innerWidth <= 768){
+            const parentLi = this.parentElement;
+            const subMenu = parentLi.querySelector('ul');
+            if(subMenu){
+                e.preventDefault();
+                parentLi.classList.toggle('active');
+            }
+        }
+    });
+});
