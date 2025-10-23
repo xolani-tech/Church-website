@@ -20,7 +20,7 @@ const blogRoutes = require("./Routes/blogRoutes");
 
 app.use("/api/events", eventRoutes);
 app.use("/api/sermons", sermonRoutes); 
-app.use("/api/blogs", blogRoutes)
+app.use("/api/blogs", blogRoutes);
 console.log("✅ Routes registered");
 // ========== END ROUTES ==========
 
@@ -70,6 +70,8 @@ const startServer = async () => {
       console.log(`📍 Test these endpoints:`);
       console.log(`   - http://localhost:${PORT}/api/events`);
       console.log(`   - http://localhost:${PORT}/api/sermons`);
+      console.log(`   - http://localhost:${PORT}/api/blogs`);
+
       console.log(`   - http://localhost:${PORT}/api/debug-routes`);
     });
 
