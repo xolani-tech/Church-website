@@ -72,7 +72,7 @@ const startServer = async () => {
       console.log(`   - http://localhost:${PORT}/api/sermons`);
       console.log(`   - http://localhost:${PORT}/api/blogs`);
 
-      console.log(`   - http://localhost:${PORT}/api/debug-routes`);
+      // console.log(`   - http://localhost:${PORT}/api/debug-routes`);
     });
 
   } catch (err) {

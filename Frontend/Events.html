@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Event – Women’s Health Awareness 2025</title>
     <link rel="stylesheet" href="/styling/style.css">
+    <link rel="icon" type="image/png" href="../Images/another_logo.png" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -85,26 +86,22 @@
   </section>
 
   <!-- Event Details -->
-  <section id="details" class="content-section">
-    <div class="container fade-in-section">
-      <h2 class="section-title">Event Details</h2>
-      <p class="section-subtitle">Everything you need to know about the event</p>
+      <section id="events" class="content-section fade-in-section">
+        <div class="container">
+          <h2 class="section-title">Upcoming Events</h2>
+          <p class="section-subtitle">
+            Join us for fellowship and community activities.
+          </p>
 
-      <div class="event-list">
-        <div class="event-item">
-          <div class="event-date">
-            <strong>12</strong>
-            <span>Oct 2025</span>
-          </div>
-          <div class="event-details">
-            <h4><i class="fas fa-clock"></i> 10:00 AM – 4:00 PM</h4>
-            <p><i class="fas fa-map-marker-alt"></i> Johannesburg Conference Centre</p>
-            <p><i class="fas fa-info-circle"></i> Learn practical steps for healthier living from doctors, nutritionists, and fitness coaches.</p>
+          <div id="events-container" class="event-list">
+            <!-- Loading state -->
+            <div class="loading-events">
+              <i class="fas fa-spinner fa-spin"></i>
+              <p>Loading upcoming events...</p>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
+      </section>
 
   <!-- Speakers -->
   <section class="content-section alt-bg">
@@ -189,7 +186,7 @@
         </div>
     </footer>
 
-  <script>
+  <!-- <script>
     // Header scroll effect
     window.addEventListener('scroll', function() {
       const header = document.getElementById('header');
@@ -219,7 +216,8 @@
     }, appearOptions);
 
     faders.forEach(fader => appearOnScroll.observe(fader));
-  </script>
+  </script> -->
+  <script src="./scripts/events.js"></script>
 
 </body>
 </html>

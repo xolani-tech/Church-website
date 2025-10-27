@@ -1276,3 +1276,169 @@ body.mobile-nav-open #header .hamburger-icon::after {
         color: black !important;
     }
 }
+
+/* ===== NEWSLETTER SECTION ===== */
+#newsletter {
+    background: linear-gradient(135deg, var(--brand-dark) 0%, #2c3e50 100%);
+    color: var(--text-light);
+}
+
+.newsletter-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.newsletter-content h2,
+.newsletter-content .section-subtitle {
+    text-align: left;
+    color: var(--text-light);
+}
+
+.newsletter-content p {
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+}
+
+.newsletter-benefits {
+    list-style: none;
+    margin-top: 2rem;
+}
+
+.newsletter-benefits li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.8rem;
+    font-size: 1rem;
+}
+
+.newsletter-benefits i {
+    color: var(--brand-gold);
+    margin-right: 1rem;
+    font-size: 0.9rem;
+}
+
+.newsletter-form {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2.5rem;
+    border-radius: 12px;
+    /* backdrop-filter: blur(10px); */
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.newsletter-form input,
+.newsletter-form select {
+    width: 100%;
+    padding: 1rem 1.2rem;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-light);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.newsletter-form input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.newsletter-form input:focus,
+.newsletter-form select:focus {
+    outline: none;
+    border-color: var(--brand-gold);
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 0 3px rgba(240, 173, 78, 0.3);
+}
+
+.newsletter-form select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='white' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1.2rem center;
+    background-size: 12px;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: auto;
+    margin-top: 0.3rem;
+}
+
+.checkbox-group label {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    line-height: 1.4;
+}
+
+.btn-newsletter {
+    width: 100%;
+    justify-content: center;
+}
+
+.newsletter-message {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 6px;
+    text-align: center;
+    font-weight: 600;
+    display: none;
+}
+
+.newsletter-message.success {
+    background: rgba(46, 204, 113, 0.2);
+    color: #2ecc71;
+    border: 1px solid #2ecc71;
+    display: block;
+}
+
+.newsletter-message.error {
+    background: rgba(231, 76, 60, 0.2);
+    color: #e74c3c;
+    border: 1px solid #e74c3c;
+    display: block;
+}
+
+/* Newsletter Responsive Design */
+@media (max-width: 992px) {
+    .newsletter-container {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    
+    .newsletter-content h2,
+    .newsletter-content .section-subtitle {
+        text-align: center;
+    }
+    
+    .newsletter-form {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .newsletter-container {
+        gap: 2rem;
+    }
+    
+    .newsletter-form {
+        padding: 1.5rem;
+    }
+    
+    .checkbox-group {
+        align-items: flex-start;
+    }
+    
+    .checkbox-group label {
+        font-size: 0.85rem;
+    }
+}
