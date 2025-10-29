@@ -17,10 +17,12 @@ console.log("MONGO_URI:", process.env.MONGO_URI ? "Loaded successfully" : "❌ N
 const eventRoutes = require("./Routes/eventRoutes");
 const sermonRoutes = require("./Routes/sermonRoutes"); 
 const blogRoutes = require("./Routes/blogRoutes");
+const paystackRoutes = require("./Routes/paystackRoutes");
 
 app.use("/api/events", eventRoutes);
 app.use("/api/sermons", sermonRoutes); 
 app.use("/api/blogs", blogRoutes);
+app.use("/api/paystack", paystackRoutes)
 console.log("✅ Routes registered");
 // ========== END ROUTES ==========
 

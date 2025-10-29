@@ -759,7 +759,7 @@ body.mobile-nav-open #header .hamburger-icon::after {
         display: block;
     }
 
-    .mega-menu-item:hover .mega-menu {
+    .mega-menu-item:hover .mega-menu &#9662 {
         display: none; /* Disable mega menu on mobile */
     }
     

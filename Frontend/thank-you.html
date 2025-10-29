@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thank You - New Jerusalem of All Nations</title>
+
+  <style>
+    :root {
+      --brand-gold: #f0ad4e;
+      --brand-dark: #1a1a1a;
+      --brand-light: #f8f9fa;
+      --brand-gray: #6c757d;
+      --text-light: #ffffff;
+      --text-dark: #333333;
+      --header-height: 80px;
+      --bg-alt: #f1f3f5;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Inter", sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      background: var(--brand-dark);
+      color: var(--text-light);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: var(--brand-gold);
+      margin-bottom: 15px;
+      letter-spacing: 1px;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: var(--brand-light);
+      max-width: 600px;
+      margin-bottom: 25px;
+    }
+
+    .home-btn {
+      background: var(--brand-gold);
+      color: var(--text-light);
+      border: none;
+      padding: 12px 30px;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      text-decoration: none;
+    }
+
+    .home-btn:hover {
+      background: #e99c38;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 15px;
+      font-size: 0.9rem;
+      color: var(--brand-gray);
+    }
+  </style>
+</head>
+<body>
+  <h1>Thank You for Your Generosity!</h1>
+  <p>Your contribution helps us continue our mission at <b>New Jerusalem of All Nations</b>. Stay blessed and connected.</p>
+
+  <a href="/index.html" class="home-btn">Return Home</a>
+
+  <footer>© 2025 NJIM<span id="year"></span> - The Holy City of God. All Rights Reserved</footer>
+
+  <!-- <script>
+    // Set the current year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Prevent going back to the giving page
+    history.pushState(null, "", location.href);
+    window.onpopstate = function () {
+      history.pushState(null, "", location.href);
+      window.location.href = "/index.html"; // Redirect to home if back is pressed
+    };
+
+    // Optional: auto-redirect after 5 seconds
+    setTimeout(() => {
+      window.location.href = "/index.html";
+    }, 5000);
+  </script> -->
+</body>
+</html>

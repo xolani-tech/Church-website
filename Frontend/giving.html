@@ -1,20 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Giving - New Jerusalem of All Nations</title>
-    <link rel="stylesheet" href="/styling/style.css">
-      <link rel="icon" type="image/png" href="../Images/money-donate.png">
+    <link rel="stylesheet" href="/styling/style.css" />
+    <link rel="icon" type="image/png" href="../Images/money-donate.png" />
 
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      }
-
+      * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; }
       :root {
         --giving-primary: #0a4b78;
         --giving-secondary: #003087;
@@ -24,365 +18,83 @@
         --giving-medium-gray: #7f8c8d;
         --giving-dark-gray: #2c3e50;
         --giving-white: #ffffff;
+        --brand-gold: #d4af37;
       }
-
-      body {
-        background-color: var(--giving-light-gray);
-        color: var(--giving-text);
-        line-height: 1.6;
-      }
-      .top-line {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 4px;
-        background-color: var(--brand-gold);
-        z-index: 1001;
-      } 
-
-      /* Main Content Styles */
-      .giving-container {
-        max-width: 800px;
-        margin: 20px auto;
-        padding: 0 20px;
-        text-align: center;
-      }
-      .about-content h2{
-        text-align: center;
-        justify-content: center;
-        font-size: 80px;
-        height: 150px;
-      }
-
-      .giving-header {
-        text-align: center;
-        margin-bottom: 40px;
-      }
-
-      .giving-title {
-        color: var(--giving-primary);
-        font-size: 32px;
-        margin-bottom: 15px;
-      }
-
-      .giving-subtitle {
-        color: var(--giving-medium-gray);
-        font-size: 18px;
-        margin-bottom: 20px;
-      }
-
-      .giving-verse {
-        font-style: italic;
-        color: var(--brand-gold);
-        font-size: 16px;
-        margin-bottom: 20px;
-      }
-
-      .giving-form {
-        background: var(--giving-white);
-        border-radius: 10px;
-        padding: 30px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-      }
-
-      .giving-step {
-        margin-bottom: 30px;
-      }
-
-      .giving-step-title {
-        font-weight: bold;
-        margin-bottom: 15px;
-        color: var(--giving-dark-gray);
-        font-size: 18px;
-      }
-
-      .giving-amount-options {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-        margin-bottom: 15px;
-      }
-
-      .giving-amount-btn {
-        background: #f1f1f1;
-        border: none;
-        padding: 12px 20px;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: all 0.3s;
-        font-size: 16px;
-      }
-
-      .giving-amount-btn:hover {
-        background: var(--giving-accent);
-        color: var(--giving-white);
-      }
-
-      .giving-amount-btn.selected {
-        background: var(--giving-accent);
-        color: var(--giving-white);
-      }
-
-      .giving-custom-amount {
-        width: 100%;
-        padding: 12px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        font-size: 16px;
-      }
-
-      .giving-select {
-        width: 100%;
-        padding: 12px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        margin-bottom: 15px;
-        font-size: 16px;
-        background-color: var(--giving-white);
-      }
-
-      .giving-payment-buttons {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        margin-top: 20px;
-      }
-
-      .giving-pay-btn {
-        padding: 15px;
-        border: none;
-        border-radius: 5px;
-        color: var(--giving-white);
-        font-weight: bold;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: all 0.3s;
-        font-size: 16px;
-      }
-
-      .giving-paystack-btn {
-        background: var(--giving-primary);
-      }
-
-      .giving-paypal-btn {
-        background: var(--giving-secondary);
-      }
-
-      .giving-pay-btn:hover {
-        opacity: 0.9;
-        transform: translateY(-2px);
-      }
-
-      .giving-pay-btn img {
-        height: 20px;
-        margin-right: 10px;
-      }
-
-      .giving-security-note {
-        display: flex;
-        align-items: center;
-        margin-top: 20px;
-        color: var(--giving-medium-gray);
-        font-size: 14px;
-      }
-
-      .giving-security-note svg {
-        margin-right: 5px;
-      }
-
-      .giving-recurring-link {
-        text-align: center;
-        margin-top: 20px;
-      }
-
-      .giving-recurring-link a {
-        color: var(--brand-gold);
-        text-decoration: none;
-        font-weight: 500;
-      }
-
-      .giving-footer {
-        text-align: center;
-        margin-top: 50px;
-        color: var(--giving-medium-gray);
-        font-size: 14px;
-        padding: 20px 0;
-      }
-      
-      /* Custom Dropdown Styles */
-      .custom-select {
-        position: relative;
-        width: 100%;
-        margin-bottom: 15px;
-      }
-      
-      .select-header {
-        padding: 15px;
-        background-color: var(--giving-white);
-        border: 2px solid #e9ecef;
-        border-radius: 5px;
-        cursor: pointer;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        transition: border-color 0.3s ease;
-        font-weight: bold;
-      }
-      
-      .select-header:hover {
-        border-color: var(--giving-accent);
-      }
-      
-      .select-header.active {
-        border-color: var(--giving-accent);
-        border-bottom-left-radius: 0;
-        border-bottom-right-radius: 0;
-      }
-      
-      .select-options {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background-color: var(--giving-white);
-        border: 2px solid #e9ecef;
-        border-top: none;
-        border-bottom-left-radius: 5px;
-        border-bottom-right-radius: 5px;
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease;
-        z-index: 10;
-      }
-      
-      .select-options.active {
-        max-height: 400px;
-        overflow-y: auto;
-      }
-      
-      .option {
-        padding: 15px;
-        border-bottom: 1px solid #f1f1f1;
-        cursor: pointer;
-        transition: background-color 0.2s ease;
-        text-align: left;
-      }
-      
-      .option:hover {
-        background-color: #f8f9fa;
-      }
-      
-      .option:last-child {
-        border-bottom: none;
-      }
-      
-      .option-title {
-        font-weight: 600;
-        margin-bottom: 5px;
-        color: var(--giving-dark-gray);
-      }
-      
-      .option-description {
-        color: var(--giving-medium-gray);
-        font-size: 0.9rem;
-        line-height: 1.4;
-      }
-      
-      .selected-option {
-        font-weight: 600;
-        color: var(--giving-dark-gray);
-      }
-      
-      .chevron {
-        transition: transform 0.3s ease;
-      }
-      
-      .chevron.rotated {
-        transform: rotate(180deg);
-      }
-      
-      .giving-offering-desc {
-        margin-top: 10px;
-        text-align: left;
-        padding: 10px;
-        background-color: #f8f9fa;
-        border-radius: 5px;
-        font-size: 14px;
-        color: var(--giving-medium-gray);
-        display: none;
-      }
-      
-      .giving-offering-desc.active {
-        display: block;
-      }
-
-      /* Responsive Styles */
+      body { background-color: var(--giving-light-gray); color: var(--giving-text); line-height: 1.6; }
+      .top-line { position: fixed; top: 0; left: 0; width: 100%; height: 4px; background-color: var(--brand-gold); z-index: 1001; }
+      .giving-container { max-width: 800px; margin: 20px auto; padding: 0 20px; text-align: center; }
+      .about-content h2 { text-align: center; font-size: 80px; height: 150px; }
+      .giving-header { text-align: center; margin-bottom: 40px; }
+      .giving-title { color: var(--giving-primary); font-size: 32px; margin-bottom: 15px; }
+      .giving-subtitle { color: var(--giving-medium-gray); font-size: 18px; margin-bottom: 20px; }
+      .giving-verse { font-style: italic; color: var(--brand-gold); font-size: 16px; margin-bottom: 20px; }
+      .giving-form { background: var(--giving-white); border-radius: 10px; padding: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); text-align:left; }
+      .giving-step { margin-bottom: 30px; }
+      .giving-step-title { font-weight: bold; margin-bottom: 15px; color: var(--giving-dark-gray); font-size: 18px; }
+      .giving-amount-options { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 15px; }
+      .giving-amount-btn { background: #f1f1f1; border: none; padding: 12px 20px; border-radius: 5px; cursor: pointer; transition: all 0.3s; font-size: 16px; }
+      .giving-amount-btn:hover { background: var(--giving-accent); color: var(--giving-white); }
+      .giving-amount-btn.selected { background: var(--giving-accent); color: var(--giving-white); }
+      .giving-custom-amount { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px; font-size: 16px; }
+      .giving-payment-buttons { display: flex; flex-direction: column; gap: 15px; margin-top: 20px; }
+      .giving-pay-btn { padding: 15px; border: none; border-radius: 5px; color: var(--giving-white); font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s; font-size: 16px; }
+      .giving-paystack-btn { background: var(--giving-primary); }
+      .giving-paypal-btn { background: var(--giving-secondary); }
+      .giving-pay-btn:hover { opacity: 0.9; transform: translateY(-2px); }
+      .giving-pay-btn img { height: 20px; margin-right: 10px; }
+      .giving-security-note { display: flex; align-items: center; margin-top: 20px; color: var(--giving-medium-gray); font-size: 14px; }
+      .giving-security-note svg { margin-right: 5px; }
+      .giving-footer { text-align: center; margin-top: 50px; color: var(--giving-medium-gray); font-size: 14px; padding: 20px 0; }
+      .giving-offering-desc { margin-top: 10px; text-align: left; padding: 10px; background-color: #f8f9fa; border-radius: 5px; font-size: 14px; color: var(--giving-medium-gray); display: none; }
+      .giving-offering-desc.active { display: block; }
+      .custom-select { position: relative; width: 100%; margin-bottom: 15px; }
+      .select-header { padding: 15px; background-color: var(--giving-white); border: 2px solid #e9ecef; border-radius: 5px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: border-color 0.3s ease; font-weight: bold; }
+      .select-header.active { border-color: var(--giving-accent); border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+      .select-options { position: absolute; top: 100%; left: 0; right: 0; background-color: var(--giving-white); border: 2px solid #e9ecef; border-top: none; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; z-index: 10; }
+      .select-options.active { max-height: 400px; overflow-y: auto; }
+      .option { padding: 15px; border-bottom: 1px solid #f1f1f1; cursor: pointer; transition: background-color 0.2s ease; text-align: left; }
+      .option:last-child { border-bottom: none; }
+      .option-title { font-weight: 600; margin-bottom: 5px; color: var(--giving-dark-gray); }
+      .option-description { color: var(--giving-medium-gray); font-size: 0.9rem; line-height: 1.4; }
+      .selected-option { font-weight: 600; color: var(--giving-dark-gray); }
+      .chevron { transition: transform 0.3s ease; }
+      .chevron.rotated { transform: rotate(180deg); }
       @media (max-width: 480px) {
-        .giving-container {
-          padding: 0 15px;
-        }
-
-        .giving-form {
-          padding: 20px;
-        }
-
-        .giving-title {
-          font-size: 28px;
-        }
-
-        .giving-subtitle {
-          font-size: 16px;
-        }
-
-        .giving-amount-options {
-          gap: 8px;
-        }
-
-        .giving-amount-btn {
-          padding: 10px 15px;
-          font-size: 14px;
-        }
-        
-        .about-content h2 {
-          font-size: 50px;
-          height: auto;
-          margin-bottom: 20px;
-        }
+        .giving-container { padding: 0 15px; }
+        .giving-form { padding: 20px; }
+        .giving-title { font-size: 28px; }
+        .giving-subtitle { font-size: 16px; }
+        .giving-amount-options { gap: 8px; }
+        .giving-amount-btn { padding: 10px 15px; font-size: 14px; }
+        .about-content h2 { font-size: 50px; height: auto; margin-bottom: 20px; }
       }
     </style>
-</head>
-<body>
-  <div class="top-line"></div>
-  
+  </head>
+  <body>
+    <div class="top-line"></div>
 
     <div class="giving-container">
       <div class="about-content">
         <h2>Partner with Us</h2>
-        <p class="giving-subtitle">
-          Choose your giving type below and help us make a difference.
-        </p>
-        <p class="giving-verse">
-          "Each of you should give what you have decided in your heart to give..." — 2 Corinthians 9:7
-        </p>
+        <p class="giving-subtitle">Choose your giving type below and help us make a difference.</p>
+        <p class="giving-verse">"Each of you should give what you have decided in your heart to give..." — 2 Corinthians 9:7</p>
       </div>
 
-      <div class="giving-form">
+      <form id="donationForm" class="giving-form">
+        <div class="giving-step">
+          <div class="giving-step-title">0. Your Details</div>
+          <input type="text" id="name" placeholder="Your Full Name" required style="width:100%; padding:12px; margin-bottom:10px; border-radius:5px; border:1px solid #ddd;">
+          <input type="email" id="email" placeholder="Email Address" required style="width:100%; padding:12px; margin-bottom:10px; border-radius:5px; border:1px solid #ddd;">
+        </div>
+
         <div class="giving-step">
           <div class="giving-step-title">1. Select Amount (ZAR)</div>
           <div class="giving-amount-options">
-            <button class="giving-amount-btn" data-amount="1000">R1,000</button>
-            <button class="giving-amount-btn" data-amount="5000">R5,000</button>
-            <button class="giving-amount-btn" data-amount="10000">R10,000</button>
+            <button type="button" class="giving-amount-btn" data-amount="1000">R1,000</button>
+            <button type="button" class="giving-amount-btn" data-amount="5000">R5,000</button>
+            <button type="button" class="giving-amount-btn" data-amount="10000">R10,000</button>
           </div>
-          <input
-            type="number"
-            id="giving-custom-amount"
-            class="giving-custom-amount"
-            placeholder="Or enter custom amount"
-          />
+          <input type="number" id="amount" class="giving-custom-amount" placeholder="Giving amount (ZAR)" required>
         </div>
 
         <div class="giving-step">
@@ -393,77 +105,35 @@
               <span class="chevron">▼</span>
             </div>
             <div class="select-options" id="select-options">
-              <div class="option" data-value="giving">
-                <div class="option-title">Giving</div>
-                <div class="option-description">General free-will contribution to support the church</div>
-              </div>
-              <div class="option" data-value="tithes">
-                <div class="option-title">Tithes</div>
-                <div class="option-description">Faithful ten percent of your income dedicated to God</div>
-              </div>
-              <div class="option" data-value="partnership">
-                <div class="option-title">Partnership</div>
-                <div class="option-description">Helping us reach more souls through outreach and missions</div>
-              </div>
-              <div class="option" data-value="support">
-                <div class="option-title">Support</div>
-                <div class="option-description">Assist with church projects, renovations, and upkeep</div>
-              </div>
-              <div class="option" data-value="seed">
-                <div class="option-title">Seed Offering</div>
-                <div class="option-description">Sow into God's work with a special sacrificial seed</div>
-              </div>
-              <div class="option" data-value="first-fruit">
-                <div class="option-title">First Fruit</div>
-                <div class="option-description">Honor God with the first increase of your harvest</div>
-              </div>
+              <div class="option" data-value="giving"><div class="option-title">Giving</div><div class="option-description">General free-will contribution to support the church</div></div>
+              <div class="option" data-value="tithes"><div class="option-title">Tithes</div><div class="option-description">Faithful ten percent of your income dedicated to God</div></div>
+              <div class="option" data-value="partnership"><div class="option-title">Partnership</div><div class="option-description">Helping us reach more souls through outreach and missions</div></div>
+              <div class="option" data-value="support"><div class="option-title">Support</div><div class="option-description">Assist with church projects, renovations, and upkeep</div></div>
+              <div class="option" data-value="seed"><div class="option-title">Seed Offering</div><div class="option-description">Sow into God's work with a special sacrificial seed</div></div>
+              <div class="option" data-value="first-fruit"><div class="option-title">First Fruit</div><div class="option-description">Honor God with the first increase of your harvest</div></div>
             </div>
           </div>
-          <div class="giving-offering-desc" id="giving-offering-desc">
-            <p id="offering-description"></p>
-          </div>
+          <div class="giving-offering-desc" id="giving-offering-desc"><p id="offering-description"></p></div>
         </div>
 
         <div class="giving-step">
           <div class="giving-step-title">3. Choose Payment Method</div>
           <div class="giving-payment-buttons">
-            <button id="giving-paystack-btn" class="giving-pay-btn giving-paystack-btn">
-              <img
-                src="https://images.seeklogo.com/logo-png/51/1/paystack-logo-png_seeklogo-511548.png"
-                alt="PayStack"
-              />
-              Pay with PayStack
-            </button>
-            <button id="giving-paypal-btn" class="giving-pay-btn giving-paypal-btn">
-              <img
-                src="https://tse1.explicit.bing.net/th/id/OIP.UEXTt6nVBMLf5I8rQh8U_wHaFj?rs=1&pid=ImgDetMain&o=7&rm=3"
-                alt="PayPal"
-              />
-              Pay with PayPal
+            <button type="submit" class="giving-pay-btn giving-paystack-btn">
+              <img src="https://images.seeklogo.com/logo-png/51/1/paystack-logo-png_seeklogo-511548.png" alt="PayStack"/>Pay with PayStack
             </button>
           </div>
         </div>
 
         <div class="giving-security-note">
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M12 2L3 5V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V5L12 2ZM12 17C10.9 17 10 16.1 10 15C10 13.9 10.9 13 12 13C13.1 13 14 13.9 14 15C14 16.1 13.1 17 12 17ZM14 9H10V11H14V9Z"
-              fill="#7f8c8d"
-            />
-          </svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L3 5V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V5L12 2ZM12 17C10.9 17 10 16.1 10 15C10 13.9 10.9 13 12 13C13.1 13 14 13.9 14 15C14 16.1 13.1 17 12 17ZM14 9H10V11H14V9Z" fill="#7f8c8d"/></svg>
           All transactions are secure and encrypted
         </div>
 
         <div class="giving-recurring-link">
           <a href="#">Set up recurring giving?</a>
         </div>
-      </div>
+      </form>
 
       <div class="giving-footer">
         <p>Need help? Contact us at newjerusalem.int.ministries@gmail.com</p>
@@ -471,143 +141,101 @@
       </div>
     </div>
 
-    <!-- PayStack Integration -->
     <script src="https://js.paystack.co/v1/inline.js"></script>
     <script>
-      // Mobile menu toggle (keep this if your external CSS doesn't handle it)
-      const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-      const navbar = document.getElementById('navbar');
-      
-      if (mobileMenuToggle && navbar) {
-        mobileMenuToggle.addEventListener('click', () => {
-          navbar.classList.toggle('active');
-        });
-      }
-
       // Amount selection
       const amountBtns = document.querySelectorAll(".giving-amount-btn");
-      const customAmount = document.getElementById("giving-custom-amount");
-      let selectedAmount = 0;
-
-      amountBtns.forEach((btn) => {
+      const amountInput = document.getElementById("amount");
+      amountBtns.forEach(btn => {
         btn.addEventListener("click", function () {
-          amountBtns.forEach((b) => b.classList.remove("selected"));
+          amountBtns.forEach(b => b.classList.remove("selected"));
           this.classList.add("selected");
-          selectedAmount = this.dataset.amount;
-          customAmount.value = "";
+          amountInput.value = this.dataset.amount;
         });
       });
 
-      customAmount.addEventListener("input", function () {
-        amountBtns.forEach((b) => b.classList.remove("selected"));
-        selectedAmount = this.value;
-      });
-
-      // Custom Dropdown Functionality
-      const selectHeader = document.getElementById('select-header');
-      const selectOptions = document.getElementById('select-options');
-      const options = document.querySelectorAll('.option');
-      const selectedOption = document.querySelector('.selected-option');
-      const chevron = document.querySelector('.chevron');
-      const offeringDesc = document.getElementById('giving-offering-desc');
-      const offeringDescription = document.getElementById('offering-description');
+      // Custom dropdown
+      const selectHeader = document.getElementById("select-header");
+      const selectOptions = document.getElementById("select-options");
+      const options = document.querySelectorAll(".option");
+      const selectedOption = document.querySelector(".selected-option");
+      const chevron = document.querySelector(".chevron");
+      const offeringDesc = document.getElementById("giving-offering-desc");
+      const offeringDescription = document.getElementById("offering-description");
       let selectedFund = null;
-      
-      // Toggle dropdown
-      selectHeader.addEventListener('click', function() {
-        selectOptions.classList.toggle('active');
-        selectHeader.classList.toggle('active');
-        chevron.classList.toggle('rotated');
+
+      selectHeader.addEventListener("click", () => {
+        selectOptions.classList.toggle("active");
+        selectHeader.classList.toggle("active");
+        chevron.classList.toggle("rotated");
       });
-      
-      // Select an option
+
       options.forEach(option => {
-        option.addEventListener('click', function() {
-          const title = this.querySelector('.option-title').textContent;
-          const description = this.querySelector('.option-description').textContent;
-          
-          selectedOption.textContent = title;
-          offeringDescription.textContent = description;
-          offeringDesc.classList.add('active');
+        option.addEventListener("click", function () {
+          selectedOption.textContent = this.querySelector(".option-title").textContent;
+          offeringDescription.textContent = this.querySelector(".option-description").textContent;
+          offeringDesc.classList.add("active");
           selectedFund = this.dataset.value;
-          
-          // Close dropdown
-          selectOptions.classList.remove('active');
-          selectHeader.classList.remove('active');
-          chevron.classList.remove('rotated');
-          
-          // Remove any previously selected option
-          options.forEach(opt => opt.classList.remove('selected'));
-          
-          // Mark this option as selected
-          this.classList.add('selected');
+
+          options.forEach(opt => opt.classList.remove("selected"));
+          this.classList.add("selected");
+
+          selectOptions.classList.remove("active");
+          selectHeader.classList.remove("active");
+          chevron.classList.remove("rotated");
         });
       });
-      
-      // Close dropdown when clicking outside
-      document.addEventListener('click', function(event) {
-        if (!selectHeader.contains(event.target) && !selectOptions.contains(event.target)) {
-          selectOptions.classList.remove('active');
-          selectHeader.classList.remove('active');
-          chevron.classList.remove('rotated');
+
+      document.addEventListener("click", function(event){
+        if (!selectHeader.contains(event.target) && !selectOptions.contains(event.target)){
+          selectOptions.classList.remove("active");
+          selectHeader.classList.remove("active");
+          chevron.classList.remove("rotated");
         }
       });
 
-      // PayStack Payment
-      document.getElementById("giving-paystack-btn").addEventListener("click", function () {
-        const amount = selectedAmount || customAmount.value;
-        if (!amount || amount <= 0) {
-          alert("Please enter a valid amount");
+      // Paystack integration
+      document.getElementById("donationForm").addEventListener("submit", function(e){
+        e.preventDefault();
+
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const amount = document.getElementById("amount").value.trim();
+
+        if (!name || !email || !amount || amount <= 0){
+          alert("Please fill in all fields correctly.");
           return;
         }
 
-        if (!selectedFund) {
-          alert("Please select a giving type");
+        if (!selectedFund){
+          alert("Please select a giving type.");
           return;
         }
 
         const handler = PaystackPop.setup({
-          key: "sk_test_24d164910ebee9a8a4acf47cfde351dc36e3e9b4", // Replace with your PayStack public key
-          email: "donor@example.com", // You can collect this or use a default
-          amount: amount * 100, // PayStack uses kobo (multiply by 100)
+          key: "pk_test_2fcfe050f8a8c3930818a605831131a826f5eccf", // Your key
+          email: email,
+          amount: amount*100,
           currency: "ZAR",
           ref: "NJ-" + Math.floor(Math.random() * 1000000000),
           metadata: {
-            custom_fields: [
-              {
-                display_name: "Fund",
-                variable_name: "fund",
-                value: selectedFund,
-              },
-            ],
+            custom_fields:[
+              { display_name:"Donor Name", variable_name:"donor_name", value:name },
+              { display_name:"Giving Type", variable_name:"giving_type", value:selectedFund }
+            ]
           },
-          callback: function (response) {
-            alert("Thank you for your generous support!");
-            // Redirect to thank you page or show success message
+          callback: function(response){
+            console.log("✅ Payment successful! Reference:", response.reference);
+            setTimeout(()=>{
+              window.location.href = "../Frontend/thank-you.html?ref=" + response.reference;
+            }, 100);
           },
-          onClose: function () {
-            console.log("Payment window closed");
-          },
+          onClose: function(){
+            console.log("Payment window closed by user");
+          }
         });
+
         handler.openIframe();
-      });
-
-      // PayPal Payment
-      document.getElementById("giving-paypal-btn").addEventListener("click", function () {
-        const amount = selectedAmount || customAmount.value;
-        if (!amount || amount <= 0) {
-          alert("Please enter a valid amount");
-          return;
-        }
-
-        if (!selectedFund) {
-          alert("Please select a giving type");
-          return;
-        }
-
-        // In a real implementation, you would use PayPal's SDK
-        alert("Redirecting to PayPal...");
-        // This is a placeholder - see below for actual PayPal integration
       });
     </script>
   </body>
