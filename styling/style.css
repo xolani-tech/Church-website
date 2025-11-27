@@ -1442,3 +1442,53 @@ body.mobile-nav-open #header .hamburger-icon::after {
         font-size: 0.85rem;
     }
 }
+.video-modal {
+    display: none; 
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0; 
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    justify-content: center; 
+    align-items: center;
+}
+
+.video-modal-content {
+    position: relative;
+}
+
+.video-close {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    font-size: 30px;
+    color: white;
+    cursor: pointer;
+}
+@media (max-width: 768px) {
+    .video-modal-content iframe {
+        width: 90vw;
+        height: 50vh;
+    }
+
+    .video-close {
+        top: -10px;
+        right: -10px;
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .video-modal-content iframe {
+        width: 95vw;
+        height: 45vh;
+    }
+
+    .video-close {
+        top: -8px;
+        right: -8px;
+        font-size: 22px;
+    }
+}
+ 
+

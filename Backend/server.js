@@ -15,14 +15,18 @@ console.log("MONGO_URI:", process.env.MONGO_URI ? "Loaded successfully" : "❌ N
 
 // ========== MOVE ROUTES UP HERE - BEFORE startServer() ==========
 const eventRoutes = require("./Routes/eventRoutes");
-const sermonRoutes = require("./Routes/sermonRoutes"); 
+const sermonRoutes = require("./Routes/sermonRoutes");
+const getInTouchRoutes = require("./Routes/getInTouchRouter") 
 const blogRoutes = require("./Routes/blogRoutes");
 const paystackRoutes = require("./Routes/paystackRoutes");
+const newsLetterRoutes = require("./Routes/newsLetterRouter");
 
 app.use("/api/events", eventRoutes);
-app.use("/api/sermons", sermonRoutes); 
+app.use("/api/getInTouch", getInTouchRoutes)
+app.use("/api/sermons", sermonRoutes);
 app.use("/api/blogs", blogRoutes);
-app.use("/api/paystack", paystackRoutes)
+app.use("/api/paystack", paystackRoutes);
+app.use("/api/newsletter", newsLetterRoutes);
 console.log("✅ Routes registered");
 // ========== END ROUTES ==========
 
@@ -73,8 +77,9 @@ const startServer = async () => {
       console.log(`   - http://localhost:${PORT}/api/events`);
       console.log(`   - http://localhost:${PORT}/api/sermons`);
       console.log(`   - http://localhost:${PORT}/api/blogs`);
-
-      // console.log(`   - http://localhost:${PORT}/api/debug-routes`);
+      console.log(`   - http://localhost:${PORT}/api/newsletter`);
+      console.log(`   - http://localhost:${PORT}/api/getInTouch`);
+      console.log(`   - http://localhost:${PORT}/api/debug-routes`);
     });
 
   } catch (err) {

@@ -30,3 +30,24 @@ exports.initializePayment = async (req, res) => {
     res.status(500).json({ error: "Payment initialization failed" });
   }
 };
+
+// ============ Verify Payment ============
+exports.verifyPayment = async (req, res) => {
+  try {
+    const { reference } = req.params;
+
+    const response = await axios.get(
+      `https://api.paystack.co/transaction/verify/${reference}`,
+      {
+        headers: {
+          Authorization: `Bearer ${process.env.PAYSTACK_SECRET_KEY}`,
+        },
+      }
+    );
+
+    res.json(response.data);
+  } catch (error) {
+    console.error("Error verifying payment:", error.response?.data || error.message);
+    res.status(500).json({ error: "Payment verification failed" });
+  }
+};

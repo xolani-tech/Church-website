@@ -1,7 +1,11 @@
-const expres = require("express");
-const router= expresss.Router("./Controllers/paystackController");
-const{ initializePayment } = require("")
+const express = require("express");
+const router = express.Router();
+const { initializePayment, verifyPayment } = require("../Controllers/paystackController");
 
-router.post("/initialize", intializePayment);
+// Initialize payment
+router.post("/initialize", initializePayment);
+
+// verify payment
+router.get("/verify/:reference", verifyPayment);
 
 module.exports = router;
