@@ -127,7 +127,7 @@
               Whether you are new to the area or searching for a spiritual home,
               we invite you to join us for our services and events.
             </p>
-            <a href="#" class="btn btn-tertiary"
+            <a href="about.html" class="btn btn-tertiary"
               >Our Beliefs <i class="fas fa-arrow-right"></i
             ></a>
           </div>
@@ -136,12 +136,16 @@
 
       <section id="sermons" class="content-section fade-in-section alt-bg">
         <div class="container">
-          <h2 class="section-title">Latest Sermons</h2>
+        <div class="sermon-title-container">
+                      <div class="watch-text">Watch</div>
+          <div class="latest-sermons-text">Latest Sermons</div>
+        <div class="underline"></div>
+        </div>
           <p class="section-subtitle">
-            Listen to messages of hope and encouragement.
+            Listen to messages of hope and encouragement to build your  <i>FAITH</i>.
           </p>
 
-          <div id="sermons-container" class="sermon-grid">
+          <div id="sermons-container" class="sermon-carousel">
             <!-- Sermons will be loaded here dynamically -->
             <div class="loading-sermons">
               <i class="fas fa-spinner fa-spin"></i>
@@ -187,6 +191,49 @@
         </div>
       </section>
 
+      <section class="watch-sermon-section">
+  <div class="watch-container">
+    
+    <!-- LEFT CONTENT -->
+    <div class="watch-text">
+      <h2>
+        Watch Your<br />
+        Favourite Sermon
+      </h2>
+
+      <p>
+        Be inspired by powerful messages and teachings.
+        Watch directly on our YouTube channel anytime.
+      </p>
+
+      <a
+        href="https://www.youtube.com/@YourChannelName"
+        target="_blank"
+        class="watch-btn"
+      >
+        Watch on YouTube
+      </a>
+    </div>
+
+    <!-- RIGHT VISUAL -->
+    <div class="watch-visual">
+        <div class="phone-shadow"></div>
+      <img
+        src="/Images/youtube_page_mockup__2_-removebg-preview.png"
+        alt="YouTube Channel Preview"
+        class="phone phone-back"
+      />
+      <img
+        src="/Images/youtube_page_mockup__3_-removebg-preview.png"
+        alt="YouTube Channel Preview"
+        class="phone phone-front"
+      />
+    </div>
+
+  </div>
+</section>
+
+
       <section id="contact" class="content-section fade-in-section alt-bg">
         <div class="container contact-container">
           <div class="contact-info">
@@ -197,8 +244,8 @@
             </p>
             <ul>
               <li>
-                <i class="fas fa-map-marker-alt"></i> 1 Homtini street Delft,
-                Leiden, 7100
+                <i class="fas fa-map-marker-alt"></i> 10 Robert Sobukwe Road Belleville,
+                7530
               </li>
               <li><i class="fas fa-phone"></i>+27 64 961 6428</li>
               <li>
@@ -242,8 +289,8 @@
           <div class="newsletter-content">
             <h2 class="section-title">Stay Connected</h2>
             <p class="section-subtitle">
-              Subscribe to our newsletter for weekly updates, sermons, and
-              events.
+              Subscribe to our newsletter for weekly updates, sermons,
+              events and <i>Daily Devotion</i>.
             </p>
             <p>
               Get the latest news, spiritual insights, and event notifications
@@ -360,15 +407,31 @@
         </div>
         <div class="footer-column">
           <h4>Service Times</h4>
-          <p><strong>Sunday:</strong> 9:00 AM & 11:00 AM</p>
-          <p><strong>Wednesday:</strong> 6:00 PM Bible Study</p>
-          <p><strong>Friday:</strong> 6:00 PM Deliverence service</p>
+          <p><strong>Sunday:</strong> 10:00 AM & 13:30 AM</p>
+          <p><strong>Wednesday:</strong> 10:00 AM Restoration Service</p>
+          <p><strong>Friday:</strong> 5:00 PM Miracle service</p>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2025 NJIM - The Holy City of God. All Rights Reserved.</p>
+        <p>&copy; 2025 NJOAN - The Holy City of God. All Rights Reserved.</p>
       </div>
     </footer>
+
+    <!-- cookie banner -->
+
+<div id="cookie-banner" class="cookie-banner hidden">
+  <h4>We use cookies</h4>
+  <p>
+    This website uses essential cookies to function properly.
+    With your permission, we may also use analytics cookies to improve the site.
+  </p>
+
+  <div class="cookie-buttons">
+    <button id="reject-cookies">Reject non-essential</button>
+    <button id="accept-cookies">Accept all</button>
+  </div>
+</div>
+
 
     <script src="script.js"></script>
   </body>

@@ -203,15 +203,29 @@ if (!window.hasInitialized) {
         return `https://img.youtube.com/vi/${match[1]}/hqdefault.jpg`;
     }
 
-    function displaySermons(sermons) {
-        const container = document.getElementById('sermons-container');
-        container.innerHTML = '';
-        if (!sermons || sermons.length === 0) {
-            container.innerHTML = '<p class="no-sermons">No sermons available at the moment.</p>';
-            return;
-        }
-        sermons.slice(0,3).forEach(s => container.appendChild(createSermonCard(s)));
+function displaySermons(sermons) {
+    const container = document.getElementById('sermons-container');
+    container.innerHTML = '';
+
+    if (!sermons || sermons.length === 0) {
+        container.innerHTML = '<p class="no-sermons">No sermons available at the moment.</p>';
+        return;
     }
+
+    sermons.slice(0, 3).forEach((s, index) => {
+        const card = createSermonCard(s);
+
+        // First sermon visible by default
+        if (index === 0) {
+            card.classList.add('active');
+        }
+
+        container.appendChild(card);
+    });
+
+    initSermonFadeCarousel(); // 🔥 start carousel AFTER render
+}
+
 
     function createEventItem(e, date) {
         const div = document.createElement('div');
@@ -440,3 +454,121 @@ if (!window.hasInitialized) {
       alert("Server error. Please try again later.");
     }
   });
+
+// EVENT REGISTRATION FORM
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.querySelector("#register form");
+
+  if (!form) {
+    console.error("Registration form not found!");
+    return;
+  }
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const fullName = form.querySelector('input[placeholder="Your Full Name"]').value.trim();
+    const email = form.querySelector('input[placeholder="Your Email Address"]').value.trim();
+    const phone = form.querySelector('input[placeholder="Your Phone Number"]').value.trim();
+
+    // Body sent to backend
+    const registrationData = { fullName, email, phone };
+
+    try {
+      const response = await fetch("http://localhost:5000/api/eventsRegistration/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(registrationData),
+      });
+
+      const result = await response.json();
+
+      if (!result.success) {
+        alert("Registration failed: " + (result.error || "Unknown error"));
+        return;
+      }
+
+      alert("Registration successful!");
+      form.reset(); // Clear form fields
+
+    } catch (err) {
+      console.error("Error submitting form:", err);
+      alert("Failed to submit. Please try again.");
+    }
+  });
+});
+
+
+// This is a cookie Banner
+  const banner = document.getElementById("cookie-banner");
+
+  function getCookie(name) {
+    return document.cookie
+      .split("; ")
+      .find(row => row.startsWith(name + "="))
+      ?.split("=")[1];
+  }
+
+  function setCookie(name, value, days = 365) {
+    const date = new Date();
+    date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+    document.cookie = `${name}=${value}; expires=${date.toUTCString()}; path=/; SameSite=Strict`;
+  }
+
+  if (!getCookie("cookie_preferences")) {
+    banner.classList.remove("hidden");
+  }
+
+  document.getElementById("accept-cookies").onclick = () => {
+    setCookie(
+      "cookie_preferences",
+      JSON.stringify({ essential: true, analytics: true })
+    );
+    banner.classList.add("hidden");
+  };
+
+  document.getElementById("reject-cookies").onclick = () => {
+    setCookie(
+      "cookie_preferences",
+      JSON.stringify({ essential: true, analytics: false })
+    );
+    banner.classList.add("hidden");
+  };
+
+
+
+function initSermonCarousel() {
+    const slides = document.querySelectorAll(
+      '#sermons-container .sermon-card'
+    );
+
+    if (slides.length === 0) return;
+
+    let current = 0;
+    slides[current].classList.add('active');
+
+    setInterval(() => {
+      slides[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+    }, 3000); // 3 seconds
+  }
+
+  // Call AFTER sermons are loaded from DB
+  document.addEventListener('sermonsLoaded', initSermonCarousel);
+
+
+function initSermonFadeCarousel() {
+    const slides = document.querySelectorAll('#sermons-container .sermon-card');
+    if (slides.length <= 1) return;
+
+    let currentIndex = 0;
+    const interval = 9000; // 3 seconds
+
+    setInterval(() => {
+        slides[currentIndex].classList.remove('active');
+        currentIndex = (currentIndex + 1) % slides.length;
+        slides[currentIndex].classList.add('active');
+    }, interval);
+}
+

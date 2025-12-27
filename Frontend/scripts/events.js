@@ -163,3 +163,128 @@ if (!window.hasInitialized) {
         c.innerHTML = `<div class="error-message"><i class="fas fa-exclamation-triangle"></i><p>${msg}</p><button onclick="fetchEvents()" class="btn-retry">Try Again</button></div>`;
     }
 }
+
+// EVENT REGISTRATION FORM
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.querySelector("#register form");
+  const messageBox = document.getElementById("registration-message");
+
+  if (!form) {
+    console.error("Registration form not found!");
+    return;
+  }
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const fullName = form.querySelector('input[placeholder="Your Full Name"]').value.trim();
+    const email = form.querySelector('input[placeholder="Your Email Address"]').value.trim();
+    const phone = form.querySelector('input[placeholder="Your Phone Number"]').value.trim();
+
+    const registrationData = { fullName, email, phone };
+
+    try {
+      const response = await fetch("http://localhost:5000/api/eventsRegistration/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(registrationData),
+      });
+
+      const result = await response.json();
+
+      if (!result.success) {
+        showMessage(result.error || "Registration failed.", "error");
+        return;
+      }
+
+      showMessage("Registration successful!", "success");
+      form.reset();
+
+    } catch (err) {
+      console.error("Error submitting form:", err);
+      showMessage("Failed to submit. Please try again.", "error");
+    }
+  });
+
+  // ————————————————————————————————
+  // FUNCTION TO SHOW AND AUTO-HIDE MESSAGE
+  // ————————————————————————————————
+  function showMessage(msg, type) {
+    messageBox.textContent = msg;
+    messageBox.className = `form-message ${type}`;
+    messageBox.style.display = "block";
+
+    // Auto-hide after 3 seconds
+    setTimeout(() => {
+      messageBox.style.display = "none";
+    }, 2000);
+  }
+});
+
+document.addEventListener("DOMContentLoaded", async () => {
+  const container = document.querySelector(".sermon-grid");
+
+  if (!container) return;
+
+  try {
+    const res = await fetch("http://localhost:5000/api/speakers");
+    const data = await res.json();
+
+    if (!data.success) {
+      container.innerHTML = "<p>No speakers available at the moment for Upcoming Event.</p>";
+      return;
+    }
+
+    const speakers = data.speakers;
+
+    // Clear existing content
+    container.innerHTML = "";
+
+    speakers.forEach(speaker => {
+      const card = document.createElement("div");
+      card.classList.add("sermon-card");
+
+      card.innerHTML = `
+        <div class="sermon-thumbnail">
+          <img src="${speaker.image}" alt="${speaker.name}">
+        </div>
+        <div class="sermon-info">
+          <h4>${speaker.name}</h4>
+          <p>${speaker.title}</p>
+        </div>
+      `;
+
+      container.appendChild(card);
+    });
+
+  } catch (err) {
+    console.error("Error fetching speakers:", err);
+    container.innerHTML = "<p>Failed to load speakers.</p>";
+  }
+});
+
+document.addEventListener("DOMContentLoaded", async () => {
+  const heroSection = document.getElementById("hero");
+
+  try {
+    const res = await fetch("http://localhost:5000/api/hero");
+    const data = await res.json();
+
+    if (!data.success || !data.hero) return;
+
+    const hero = data.hero;
+
+    heroSection.style.backgroundImage = `url(${hero.backgroundImage})`;
+    heroSection.querySelector(".hero-scripture").textContent = hero.scripture || "";
+    heroSection.querySelector(".hero-title").textContent = hero.title;
+    heroSection.querySelector(".hero-subtitle").textContent = hero.subtitle;
+    heroSection.querySelector(".btn-primary").textContent = hero.registerBtnText || "Register Now";
+    heroSection.querySelector(".btn-primary").href = hero.registerBtnLink || "#register";
+    heroSection.querySelector(".btn-secondary").textContent = hero.learnBtnText || "Learn More";
+    heroSection.querySelector(".btn-secondary").href = hero.learnBtnLink || "#details";
+
+  } catch (err) {
+    console.log("Error loading hero:", err);
+  }
+});
+

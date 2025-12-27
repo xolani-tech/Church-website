@@ -1,312 +1,399 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Giving - New Jerusalem of All Nations</title>
-    <link rel="stylesheet" href="/styling/style.css" />
-    <link rel="icon" type="image/png" href="../Images/money-donate.png" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Giving - New Jerusalem of All Nations</title>
+  <link rel="icon" type="image/png" href="../Images/another_logo.png" />
+  <link rel="stylesheet" href="../styling/style.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+  <style>
+    /* HERO SECTION */
+    .giving-hero {
+      position: relative;
+      min-height: 80vh;
+      background-image: url("../Images/NJOANt.png");
+      background-size: cover;
+      background-position: center;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
 
-    <style>
-      * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; }
-      :root {
-        --giving-primary: #0a4b78;
-        --giving-secondary: #003087;
-        --giving-accent: #3498db;
-        --giving-text: #333;
-        --giving-light-gray: #f5f5f5;
-        --giving-medium-gray: #7f8c8d;
-        --giving-dark-gray: #2c3e50;
-        --giving-white: #ffffff;
-        --brand-gold: #d4af37;
-      }
-      body { background-color: var(--giving-light-gray); color: var(--giving-text); line-height: 1.6; }
-      .top-line { position: fixed; top: 0; left: 0; width: 100%; height: 4px; background-color: var(--brand-gold); z-index: 1001; }
-      .giving-container { max-width: 800px; margin: 20px auto; padding: 0 20px; text-align: center; }
-      .about-content h2 { text-align: center; font-size: 80px; height: 150px; }
-      .giving-header { text-align: center; margin-bottom: 40px; }
-      .giving-title { color: var(--giving-primary); font-size: 32px; margin-bottom: 15px; }
-      .giving-subtitle { color: var(--giving-medium-gray); font-size: 18px; margin-bottom: 20px; }
-      .giving-verse { font-style: italic; color: var(--brand-gold); font-size: 16px; margin-bottom: 20px; }
-      .giving-form { background: var(--giving-white); border-radius: 10px; padding: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); text-align:left; }
-      .giving-step { margin-bottom: 30px; }
-      .giving-step-title { font-weight: bold; margin-bottom: 15px; color: var(--giving-dark-gray); font-size: 18px; }
-      .giving-amount-options { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 15px; }
-      .giving-amount-btn { background: #f1f1f1; border: none; padding: 12px 20px; border-radius: 5px; cursor: pointer; transition: all 0.3s; font-size: 16px; }
-      .giving-amount-btn:hover { background: var(--giving-accent); color: var(--giving-white); }
-      .giving-amount-btn.selected { background: var(--giving-accent); color: var(--giving-white); }
-      .giving-custom-amount { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px; font-size: 16px; }
-      .giving-payment-buttons { display: flex; flex-direction: column; gap: 15px; margin-top: 20px; }
-      .giving-pay-btn { padding: 15px; border: none; border-radius: 5px; color: var(--giving-white); font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s; font-size: 16px; }
-      .giving-paystack-btn { background: var(--giving-primary); }
-      .giving-paypal-btn { background: var(--giving-secondary); }
-      .giving-pay-btn:hover { opacity: 0.9; transform: translateY(-2px); }
-      .giving-pay-btn img { height: 20px; margin-right: 10px; }
-      .giving-security-note { display: flex; align-items: center; margin-top: 20px; color: var(--giving-medium-gray); font-size: 14px; }
-      .giving-security-note svg { margin-right: 5px; }
-      .giving-footer { text-align: center; margin-top: 50px; color: var(--giving-medium-gray); font-size: 14px; padding: 20px 0; }
-      .giving-offering-desc { margin-top: 10px; text-align: left; padding: 10px; background-color: #f8f9fa; border-radius: 5px; font-size: 14px; color: var(--giving-medium-gray); display: none; }
-      .giving-offering-desc.active { display: block; }
-      .custom-select { position: relative; width: 100%; margin-bottom: 15px; }
-      .select-header { padding: 15px; background-color: var(--giving-white); border: 2px solid #e9ecef; border-radius: 5px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: border-color 0.3s ease; font-weight: bold; }
-      .select-header.active { border-color: var(--giving-accent); border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
-      .select-options { position: absolute; top: 100%; left: 0; right: 0; background-color: var(--giving-white); border: 2px solid #e9ecef; border-top: none; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; z-index: 10; }
-      .select-options.active { max-height: 400px; overflow-y: auto; }
-      .option { padding: 15px; border-bottom: 1px solid #f1f1f1; cursor: pointer; transition: background-color 0.2s ease; text-align: left; }
-      .option:last-child { border-bottom: none; }
-      .option-title { font-weight: 600; margin-bottom: 5px; color: var(--giving-dark-gray); }
-      .option-description { color: var(--giving-medium-gray); font-size: 0.9rem; line-height: 1.4; }
-      .selected-option { font-weight: 600; color: var(--giving-dark-gray); }
-      .chevron { transition: transform 0.3s ease; }
-      .chevron.rotated { transform: rotate(180deg); }
-      @media (max-width: 480px) {
-        .giving-container { padding: 0 15px; }
-        .giving-form { padding: 20px; }
-        .giving-title { font-size: 28px; }
-        .giving-subtitle { font-size: 16px; }
-        .giving-amount-options { gap: 8px; }
-        .giving-amount-btn { padding: 10px 15px; font-size: 14px; }
-        .about-content h2 { font-size: 50px; height: auto; margin-bottom: 20px; }
-      }
-    </style>
-  </head>
-  <body>
-    <div class="top-line"></div>
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.85) 0%,
+        rgba(0, 0, 0, 0.6) 40%,
+        rgba(0, 0, 0, 0.2) 70%
+      );
+      z-index: 1;
+    }
 
-    <div class="giving-container">
-      <div class="about-content">
-        <h2>Partner with Us</h2>
-        <p class="giving-subtitle">Choose your giving type below and help us make a difference.</p>
-        <p class="giving-verse">"Each of you should give what you have decided in your heart to give..." — 2 Corinthians 9:7</p>
-      </div>
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: auto;
+      padding: 80px 40px;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      align-items: center;
+      gap: 20px;
+    }
 
-      <form id="donationForm" class="giving-form">
-        <div class="giving-step">
-          <div class="giving-step-title">0. Your Details</div>
-          <input type="text" id="name" placeholder="Your Full Name" required style="width:100%; padding:12px; margin-bottom:10px; border-radius:5px; border:1px solid #ddd;">
-          <input type="email" id="email" placeholder="Email Address" required style="width:100%; padding:12px; margin-bottom:10px; border-radius:5px; border:1px solid #ddd;">
-        </div>
+    .hero-text h1 {
+      color: #fff;
+      font-size: 4rem;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
 
-        <div class="giving-step">
-          <div class="giving-step-title">1. Select Amount (ZAR)</div>
-          <div class="giving-amount-options">
-            <button type="button" class="giving-amount-btn" data-amount="1000">R1,000</button>
-            <button type="button" class="giving-amount-btn" data-amount="5000">R5,000</button>
-            <button type="button" class="giving-amount-btn" data-amount="10000">R10,000</button>
-          </div>
-          <input type="number" id="amount" class="giving-custom-amount" placeholder="Giving amount (ZAR)" required>
-        </div>
+    .hero-text p {
+      color: #e0e0e0;
+      font-size: 1.1rem;
+      max-width: 500px;
+    }
 
-        <div class="giving-step">
-          <div class="giving-step-title">2. Select Giving Type</div>
-          <div class="custom-select">
-            <div class="select-header" id="select-header">
-              <span class="selected-option">Choose a giving type</span>
-              <span class="chevron">▼</span>
-            </div>
-            <div class="select-options" id="select-options">
-              <div class="option" data-value="giving"><div class="option-title">Giving</div><div class="option-description">General free-will contribution to support the church</div></div>
-              <div class="option" data-value="tithes"><div class="option-title">Tithes</div><div class="option-description">Faithful ten percent of your income dedicated to God</div></div>
-              <div class="option" data-value="partnership"><div class="option-title">Partnership</div><div class="option-description">Helping us reach more souls through outreach and missions</div></div>
-              <div class="option" data-value="support"><div class="option-title">Support</div><div class="option-description">Assist with church projects, renovations, and upkeep</div></div>
-              <div class="option" data-value="seed"><div class="option-title">Seed Offering</div><div class="option-description">Sow into God's work with a special sacrificial seed</div></div>
-              <div class="option" data-value="first-fruit"><div class="option-title">First Fruit</div><div class="option-description">Honor God with the first increase of your harvest</div></div>
-            </div>
-          </div>
-          <div class="giving-offering-desc" id="giving-offering-desc"><p id="offering-description"></p></div>
-        </div>
+    /* GIVING CARDS */
 
-        <div class="giving-step">
-          <div class="giving-step-title">3. Choose Payment Method</div>
-          <div class="giving-payment-buttons">
-            <button type="submit" class="giving-pay-btn giving-paystack-btn">
-              <img src="https://images.seeklogo.com/logo-png/51/1/paystack-logo-png_seeklogo-511548.png" alt="PayStack"/>Pay with PayStack
+/* Section wrapper */
+.giving-cards {
+  width: 100%;
+}
+
+/* Desktop layout */
+.giving-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  min-height: 320px;
+}
+
+/* Card base */
+.card {
+  padding: 50px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+    .card-dark { background: #1f1f1f; color: #fff; }
+    .card-darker { background: #2a2a2a; color: #fff; padding-bottom: 23px; }
+    .card-light { background: #f7f3ee; color: #222; }
+
+    .card h3 { font-size: 3rem; margin-bottom: 10px; }
+    .card p { font-size: 2rem; line-height: 1.6; font-weight: 700; }
+    .card small { font-size: 0.95rem; opacity: 0.8; }
+
+    .divider {
+      width: 40px;
+      height: 3px;
+      background: #f9a23b;
+      margin: 20px auto;
+      display: block;
+    }
+
+    .btn-give {
+      display: inline-block;
+      padding: 14px 28px;
+      background: #f9a23b;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      letter-spacing: 1px;
+      margin-top: 20px;
+      border-radius: 4px;
+      transition: background 0.3s ease;
+    }
+
+    .btn-give:hover { background: #d98e1f; }
+
+    /* MOBILE RESPONSIVENESS */
+    @media (max-width: 768px) {
+      .giving-hero { background-position: right; }
+      .hero-content { grid-template-columns: 1fr; padding: 60px 20px; background-position: ; }
+      .giving-grid { grid-template-columns: 1fr; }
+      .hero-text h1 { font-size: 2.2rem; }
+    }
+
+    /* =========================
+   BANK DETAILS SECTION
+   ========================= */
+
+.bank-details {
+  /* background: ; */
+  color: #111;
+  padding: 80px 20px;
+}
+
+.bank-container {
+  max-width: 1200px;
+  margin: auto;
+  text-align: center;
+}
+
+.bank-details h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.bank-intro {
+  color: #ccc;
+  max-width: 700px;
+  margin: 0 auto 50px;
+  font-size: 1.1rem;
+}
+
+.bank-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+}
+
+.bank-card {
+  /* background: #ccc; */
+  padding: 40px 30px;
+  border-radius: 10px;
+  text-align: left;
+}
+
+.bank-card h3 {
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+}
+
+.bank-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.bank-card li {
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  font-size: 1rem;
+}
+
+.bank-card li:last-child {
+  border-bottom: none;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .bank-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bank-details h2 {
+    font-size: 2rem;
+  }
+}
+
+  </style>
+</head>
+<body>
+      <div class="top-line"></div>
+
+    <header id="header">
+      <div class="container">
+        <a href="#" class="logo">NEW JERUSALEM</a>
+        <nav id="navbar">
+          <ul class="nav-links">
+            <li><a href="/Frontend/index.html">Home</a></li>
+            <li><a href="/Frontend/about.html">About</a></li>
+            <li><a href="/Frontend/Live_Stream.html">Sermons</a></li>
+            <li class="mega-menu-item">
+              <a href="#ministries">Ministries &#9662;</a>
+              <div class="mega-menu">
+                <div class="mega-menu-content">
+                  <div class="mega-menu-column">
+                    <h3>Community Groups</h3>
+                    <a href="#">Men’s Ministry</a>
+                    <a href="#">Women’s Ministry</a>
+                    <a href="#">Youth Group</a>
+                    <a href="/Frontend/blog.html">Blog</a>
+                  </div>
+                  <div class="mega-menu-column">
+                    <h3>Outreach</h3>
+                    <a href="#">Local Missions</a>
+                    <a href="#">Global Missions</a>
+                    <a href="#">Food Pantry</a>
+                    <a href="#">Community Service</a>
+                  </div>
+                  <div class="mega-menu-column">
+                    <h3>Education</h3>
+                    <a href="#">Bible Studies</a>
+                    <a href="#">Sunday School</a>
+                    <a href="#">New Believers Class</a>
+                    <a href="#">Theology Seminars</a>
+                  </div>
+                  <div class="mega-menu-column featured-column">
+                    <img src="/Images/Nj youth.jpg" alt="Children's Ministry" />
+                    <h4>Children's Ministry</h4>
+                    <p>Programs available for all ages.</p>
+                    <a href="#" class="btn-learn-more">Learn More &rarr;</a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li><a href="Events.html">Events</a></li>
+            <button class="btn btn-primary">
+              <li>
+                <a href="/Frontend/giving.html" target="_blank">Giving</a>
+              </li>
             </button>
-            <!-- PayPal Custom Button --> <button type="button" id="paypal-btn" class="giving-pay-btn giving-paypal-btn"> <img src="https://www.paypalobjects.com/webstatic/icon/pp258.png" alt="PayPal" /> Pay with PayPal </button>
-        </div>
+          </ul>
+        </nav>
+        <button id="mobile-menu-toggle">
+          <span class="hamburger-icon"></span>
+        </button>
+      </div>
+    </header>
 
-        <div class="giving-security-note">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L3 5V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V5L12 2ZM12 17C10.9 17 10 16.1 10 15C10 13.9 10.9 13 12 13C13.1 13 14 13.9 14 15C14 16.1 13.1 17 12 17ZM14 9H10V11H14V9Z" fill="#7f8c8d"/></svg>
-          All transactions are secure and encrypted
-        </div>
-
-        <div class="giving-recurring-link">
-          <a href="#">Set up recurring giving?</a>
-        </div>
-      </form>
-
-      <div class="giving-footer">
-        <p>Need help? Contact us at newjerusalem.int.ministries@gmail.com</p>
-        <p>© 2025 New Jerusalem of All Nations. All rights reserved.</p>
+  <section class="giving-hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1>Welcome to Our Online Giving Experience</h1>
+        <p>Giving online has become easier, faster, and more secure than ever. Thank you for your generosity.</p>
       </div>
     </div>
+  </section>
 
-    <script src="https://js.paystack.co/v1/inline.js"></script>
-    <script>
-      // Amount selection
-      const amountBtns = document.querySelectorAll(".giving-amount-btn");
-      const amountInput = document.getElementById("amount");
-      amountBtns.forEach(btn => {
-        btn.addEventListener("click", function () {
-          amountBtns.forEach(b => b.classList.remove("selected"));
-          this.classList.add("selected");
-          amountInput.value = this.dataset.amount;
-        });
-      });
+  <main class="giving-page">
+    <section class="giving-cards">
+      <div class="giving-grid">
+        <div class="card card-dark">
+          <p >Thank you for your generosity. It is because of your faithfulness that we are able to see lives Restored in Christ.</p>
+          <span class="divider"></span>
+        </div>
 
-      // Custom dropdown
-      const selectHeader = document.getElementById("select-header");
-      const selectOptions = document.getElementById("select-options");
-      const options = document.querySelectorAll(".option");
-      const selectedOption = document.querySelector(".selected-option");
-      const chevron = document.querySelector(".chevron");
-      const offeringDesc = document.getElementById("giving-offering-desc");
-      const offeringDescription = document.getElementById("offering-description");
-      let selectedFund = null;
+        <div class="card card-darker">
+          <h3>Give Now</h3>
+          <span class="divider"></span>
+          <a href="#" class="btn-give">Give Online</a>
+        </div>
 
-      selectHeader.addEventListener("click", () => {
-        selectOptions.classList.toggle("active");
-        selectHeader.classList.toggle("active");
-        chevron.classList.toggle("rotated");
-      });
+        <div class="card card-light">
+          <h3>International Giving</h3>
+          <small>Outside Lesotho &amp; RSA</small>
+          <span class="divider"></span>
+          <a href="#" class="btn-give">Give via PayPal</a>
+        </div>
+      </div>
+    </section>
+  </main>
 
-      options.forEach(option => {
-        option.addEventListener("click", function () {
-          selectedOption.textContent = this.querySelector(".option-title").textContent;
-          offeringDescription.textContent = this.querySelector(".option-description").textContent;
-          offeringDesc.classList.add("active");
-          selectedFund = this.dataset.value;
+  <section class="bank-details">
+  <div class="bank-container">
 
-          options.forEach(opt => opt.classList.remove("selected"));
-          this.classList.add("selected");
+    <h2>Banking Details</h2>
+    <p class="bank-intro">
+      You may also give via direct bank transfer or mobile payment.
+      Please use the correct reference when making your contribution.
+    </p>
 
-          selectOptions.classList.remove("active");
-          selectHeader.classList.remove("active");
-          chevron.classList.remove("rotated");
-        });
-      });
+    <div class="bank-grid">
 
-      document.addEventListener("click", function(event){
-        if (!selectHeader.contains(event.target) && !selectOptions.contains(event.target)){
-          selectOptions.classList.remove("active");
-          selectHeader.classList.remove("active");
-          chevron.classList.remove("rotated");
-        }
-      });
+      <!-- Bank Account -->
+      <div class="bank-card">
+        <h3>Bank Transfer</h3>
+        <span class="divider"></span>
 
-      // Paystack integration
-      document.getElementById("donationForm").addEventListener("submit", function(e){
-        e.preventDefault();
+        <ul>
+          <li><strong>Bank:</strong> First National Bank (FNB)</li>
+          <li><strong>Account Name:</strong> New Jerusalem of All Nations</li>
+          <li><strong>Account Number:</strong> 6284 123 456</li>
+          <li><strong>Branch Code:</strong> 250655</li>
+          <li><strong>Account Type:</strong> Cheque Account</li>
+          <li><strong>Reference:</strong> Tithe / Offering</li>
+        </ul>
+      </div>
 
-        const name = document.getElementById("name").value.trim();
-        const email = document.getElementById("email").value.trim();
-        const amount = document.getElementById("amount").value.trim();
+      <!-- Mobile Payment -->
+      <div class="bank-card">
+        <h3>Mobile Payment</h3>
+        <span class="divider"></span>
 
-        if (!name || !email || !amount || amount <= 0){
-          alert("Please fill in all fields correctly.");
-          return;
-        }
+        <ul>
+          <li><strong>Service:</strong> PayShap / eWallet</li>
+          <li><strong>Cell Number:</strong> 071 234 5678</li>
+          <li><strong>Account Name:</strong> NJOAN Giving</li>
+          <li><strong>Purpose:</strong> Tithes &amp; Offerings</li>
+        </ul>
+      </div>
 
-        if (!selectedFund){
-          alert("Please select a giving type.");
-          return;
-        }
+    </div>
 
-        const handler = PaystackPop.setup({
-          key: "pk_test_2fcfe050f8a8c3930818a605831131a826f5eccf", // Your key
-          email: email,
-          amount: amount*100,
-          currency: "ZAR",
-          ref: "NJ-" + Math.floor(Math.random() * 1000000000),
-          metadata: {
-            custom_fields:[
-              { display_name:"Donor Name", variable_name:"donor_name", value:name },
-              { display_name:"Giving Type", variable_name:"giving_type", value:selectedFund }
-            ]
-          },
-          callback: function(response){
-            console.log("✅ Payment successful! Reference:", response.reference);
-            setTimeout(()=>{
-              window.location.href = "../Frontend/thank-you.html?ref=" + response.reference;
-            }, 100);
-          },
-          onClose: function(){
-            console.log("Payment window closed by user");
-          }
-        });
-
-        <!-- PayPal SDK -->
+  </div>
+</section>
 
 
-  const paypalBtn = document.getElementById("paypal-btn");
+      <footer id="footer">
+      <div class="container footer-grid">
+        <div class="footer-column">
+          <h4>About NJIM</h4>
+          <p>
+            A community of believers dedicated to growing in faith and serving
+            the world with the love of Christ.
+          </p>
+        </div>
+        <div class="footer-column">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#sermons">Sermons</a></li>
+            <li><a href="#events">Events</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="blog.html">Blog</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Connect With Us</h4>
+          <div class="social-icons">
+            <a
+              href="https://www.facebook.com/NewJerusalemMinistr"
+              target="_blank"
+              rel="noopener noreferrer"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a
+              href="https://www.instagram.com/messaiahchannel/"
+              target="_blank"
+              rel="noopener noreferrer"
+              ><i class="fab fa-instagram"></i
+            ></a>
+            <a
+              href="https://www.youtube.com/@messiahchannel6023"
+              target="_blank"
+              rel="noopener noreferrer"
+              ><i class="fab fa-youtube"></i
+            ></a>
+            <a
+              href="https://www.tiktok.com/@njerusalemministry"
+              target="_blank"
+              rel="noopener noreferrer"
+              ><i class="fab fa-tiktok"></i
+            ></a>
+          </div>
+        </div>
+        <div class="footer-column">
+          <h4>Service Times</h4>
+          <p><strong>Sunday:</strong> 10:00 AM & 13:30 AM</p>
+          <p><strong>Wednesday:</strong> 10:00 AM Restoration Service</p>
+          <p><strong>Friday:</strong> 5:00 PM Miracle service</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 NJOAN - The Holy City of God. All Rights Reserved.</p>
+      </div>
+    </footer>
 
-  paypalBtn.addEventListener("click", function () {
-    const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const amount = document.getElementById("amount").value.trim();
-    
-    if (!name || !email || !amount || amount <= 0) {
-      alert("Please fill in all fields correctly.");
-      return;
-    }
-
-    if (!selectedFund) {
-      alert("Please select a giving type.");
-      return;
-    }
-
-    // Create a temporary container for PayPal Buttons
-    let container = document.createElement("div");
-    container.id = "paypal-temp-container";
-    document.body.appendChild(container);
-
-    paypal.Buttons({
-      style: {
-        layout: 'vertical',
-        shape: 'rect',
-        label: 'paypal'
-      },
-      createOrder: function (data, actions) {
-        return actions.order.create({
-          purchase_units: [{
-            amount: { value: amount },
-            description: `Giving Type: ${selectedFund}`
-          }]
-        });
-      },
-      onApprove: function (data, actions) {
-        return actions.order.capture().then(function (details) {
-          console.log("✅ PayPal payment successful!", details);
-          // Redirect to thank-you page with reference
-          window.location.href = `../Frontend/thank-you.html?ref=${details.id}`;
-        });
-      },
-      onCancel: function (data) {
-        console.log("PayPal payment cancelled", data);
-        alert("Payment cancelled.");
-      },
-      onError: function (err) {
-        console.error("PayPal payment error", err);
-        alert("An error occurred during the payment.");
-      }
-    }).render("#paypal-temp-container");
-
-    // Optional: remove the container after 5 min to keep DOM clean
-    setTimeout(() => {
-      if (document.getElementById("paypal-temp-container")) {
-        document.getElementById("paypal-temp-container").remove();
-      }
-    }, 5 * 60 * 1000);
-  });
-
-
-
-
-        handler.openIframe();
-      });
-    </script>
-    <script src="https://www.paypal.com/sdk/js?client-id=AQd9oTVwyEGG2EEzBlg8SFJ9leRAKTKHTh3dZt24PoTSUj97iPS41qT_FZe25yCja1ktOS_a8ry4_BGM"></script>
-  </body>
+  <script src="script.js"></script>
+</body>
 </html>
-
-

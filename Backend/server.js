@@ -20,6 +20,9 @@ const getInTouchRoutes = require("./Routes/getInTouchRouter")
 const blogRoutes = require("./Routes/blogRoutes");
 const paystackRoutes = require("./Routes/paystackRoutes");
 const newsLetterRoutes = require("./Routes/newsLetterRouter");
+const eventRegistration = require("./Routes/eventsRegistrationRouter")
+const speakerRouter = require("./Routes/eventSpeakerRouter")
+const heroRouter = require("./Routes/eventHeroRouter")
 
 app.use("/api/events", eventRoutes);
 app.use("/api/getInTouch", getInTouchRoutes)
@@ -27,6 +30,10 @@ app.use("/api/sermons", sermonRoutes);
 app.use("/api/blogs", blogRoutes);
 app.use("/api/paystack", paystackRoutes);
 app.use("/api/newsletter", newsLetterRoutes);
+app.use("/api/eventsRegistration", eventRegistration)
+app.use("/api/speakers", speakerRouter)
+app.use("/uploads", express.static("uploads"));  // serve uploaded images
+app.use("/api/hero", heroRouter);
 console.log("✅ Routes registered");
 // ========== END ROUTES ==========
 
@@ -79,6 +86,7 @@ const startServer = async () => {
       console.log(`   - http://localhost:${PORT}/api/blogs`);
       console.log(`   - http://localhost:${PORT}/api/newsletter`);
       console.log(`   - http://localhost:${PORT}/api/getInTouch`);
+      console.log(`   - http://localhost:${PORT}/api/eventsRegistration`);
       console.log(`   - http://localhost:${PORT}/api/debug-routes`);
     });
 
