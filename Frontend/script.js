@@ -15,6 +15,16 @@ if (!window.hasInitialized) {
         fetchSermons().then(() => enableSermonPlayModal()).catch(console.error);
     });
 
+    let isScrolling = false;
+     
+    window.addEventListener('scroll', () => {
+        isScrolling = true;
+        clearTimeout(window._scrollTimer);
+        window._scrollTimer = setTimeout(() =>{
+            isScrolling = false;
+        }, 50);
+    })
+
     // ===== HEADER =====
     function initializeHeader() {
         const header = document.getElementById('header');

@@ -1505,7 +1505,7 @@ body.mobile-nav-open #header .hamburger-icon::after {
   }
 
   .content-section {
-    padding: 20px 0;
+    padding: 10px 0;
   }
 
   body {
@@ -1930,9 +1930,9 @@ body.mobile-nav-open #header .hamburger-icon::after {
         }
         
         @media (max-width: 480px) {
-            body {
+            /* body {
                 padding: 20px 15px;
-            }
+            } */
             
             .beliefs-section {
                 padding: 30px 20px;
